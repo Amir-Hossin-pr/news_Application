@@ -9,6 +9,8 @@ const sequelize = new Sequelize("News_DB", "amir", "1G14ijWA", {
 
 const modelDefiners = [
   require("../models/news/news.model"),
+  require("../models/news/keys.model"),
+  require("../models/news/newsGroups.model"),
   require("../models/news/group.model"),
   require("../models/users/role.model"),
   require("../models/users/session.model"),
