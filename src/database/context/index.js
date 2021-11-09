@@ -23,6 +23,5 @@ for (const modelDefiner of modelDefiners) {
 
 applyExtraSetup(sequelize);
 
-sequelize.sync({ force: true });
 
 module.exports = sequelize;
