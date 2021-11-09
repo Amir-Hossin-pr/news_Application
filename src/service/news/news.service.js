@@ -10,4 +10,22 @@ async function getClientNews(page, count) {
   }
 }
 
-module.exports = { getClientNews };
+async function createNews(news) {
+  try {
+    await models.News.create(news);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+async function deleteNews(id) {
+  try {
+    await models.News.drop(id);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+module.exports = { getClientNews, createNews, deleteNews };
