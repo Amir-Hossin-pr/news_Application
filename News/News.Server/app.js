@@ -1,17 +1,35 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
 const path = require("path");
-const index_1 = require("./routes/index");
-const user_1 = require("./routes/user");
-const debug = require('debug')('my express app');
+const PORT = 3000;
 const app = express();
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/', index_1.default);
-app.use('/users', user_1.default);
+//data base 
+const sequlize = require("./dataBase/context/index");
+function assertDataBaseOk() {
+    return __awaiter(this, void 0, void 0, function* () {
+        console.log("Checking Data Base Connection ...");
+        try {
+            yield sequlize.authenticate();
+            console.log("Data Base Connected Successfully!");
+        }
+        catch (e) {
+            console.log("Unable to connect to Data Base");
+            console.log(e.message);
+            process.exit(1);
+        }
+    });
+}
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
     const err = new Error('Not Found');
@@ -39,8 +57,12 @@ app.use((err, req, res, next) => {
         error: {}
     });
 });
-app.set('port', process.env.PORT || "3001");
-const server = app.listen(3000, function () {
-    debug(`Express server listening on port ${server.address().port}`);
+const server = app.listen(PORT, function () {
+    return __awaiter(this, void 0, void 0, function* () {
+        yield assertDataBaseOk();
+        let port = server.address().port;
+        console.log(`Express server listening on port ${port}`);
+        console.log(`http://localhost:${port}`);
+    });
 });
 //# sourceMappingURL=app.js.map
