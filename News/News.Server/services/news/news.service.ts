@@ -1,6 +1,8 @@
 
 import sequlize from "../../dataBase/context/index"
 import { messages } from "../../consts/index"
+import { PaginationModel } from "../pagination";
+import { Model } from "sequelize-typescript";
 
 export class NewsServices {
     async getClientNews(pagination: PaginationModel) {
@@ -10,7 +12,13 @@ export class NewsServices {
                 limit: pagination.count,
                 offset: (pagination.page * pagination.count),
             });
-            return this.newsList(news, pagination.count);
+            return {
+                status: true,
+                code: 200,
+                title: 'Success',
+                list: news.rows,
+                pages: news.count / pagination.count
+            }
         } catch {
             return messages.exception
         }
@@ -18,12 +26,18 @@ export class NewsServices {
 
     async getAdminNews(pagination: PaginationModel) {
         try {
-            let news = sequlize.models.News.findAndCountAll({
+            let news = await sequlize.models.News.findAndCountAll({
                 limit: pagination.count,
                 offset: (pagination.page * pagination.count),
             });
 
-            return this.newsList(news, pagination.count);
+            return {
+                status: true,
+                code: 200,
+                title: 'Success',
+                list: news.rows,
+                pages: news.count / pagination.count
+            }
         }
         catch {
             return messages.exception;
@@ -45,16 +59,6 @@ export class NewsServices {
             return true;
         } catch {
             return messages.exception
-        }
-    }
-
-    newsList(news, count) {
-        return {
-            status: true,
-            code: 200,
-            title: 'Success',
-            list: news.rows,
-            pages: news.count / count
         }
     }
 }
