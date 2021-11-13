@@ -12,9 +12,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
 const router = express.Router();
 const news_service_1 = require("../../services/news/news.service");
-const newsServices = new news_service_1.default();
+const newsServices = new news_service_1.NewsServices();
 router.get("/:page/:count", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    let news = yield newsServices.getClientNews(parseInt(req.params.page), parseInt(req.params.count));
+    let news = yield newsServices.getClientNews({
+        page: parseInt(req.params.page),
+        count: parseInt(req.params.count)
+    });
     res.json(news);
 }));
 exports.default = router;

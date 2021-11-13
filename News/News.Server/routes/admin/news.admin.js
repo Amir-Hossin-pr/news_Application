@@ -9,25 +9,36 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const console_1 = require("console");
 const express = require("express");
 const route = express.Router();
 const index_1 = require("../../consts/index");
 const account_service_1 = require("../../services/user/account.service");
+const news_service_1 = require("../../services/news/news.service");
 const accountServices = new account_service_1.AccountService();
+const newsServices = new news_service_1.NewsServices();
 route.use((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     let user = yield accountServices.getUser(req.headers);
-    (0, console_1.log)(user);
     if (user != null) {
-        next();
+        if (user.RoleId == 1) {
+            next();
+        }
+        else {
+            res.json(index_1.messages.accessDenied);
+            res.end();
+        }
     }
     else {
         res.json(index_1.messages.accessDenied);
         res.end();
     }
 }));
-route.get("/", (req, res) => {
-    res.json({ Admin: true });
-});
+route.get("/getNews/:page/:count", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    let news = yield newsServices.getAdminNews({
+        page: parseInt(req.params.page),
+        count: parseInt(req.params.count)
+    });
+    res.json(news);
+    res.end();
+}));
 exports.default = route;
 //# sourceMappingURL=news.admin.js.map

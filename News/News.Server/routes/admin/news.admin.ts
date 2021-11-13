@@ -24,7 +24,7 @@ route.use(async (req: express.Request, res: express.Response, next: express.Next
     }
 })
 
-route.get("/:page/:count", async (req: express.Request, res: express.Response) => {
+route.get("/getNews/:page/:count", async (req: express.Request, res: express.Response) => {
     let news = await newsServices.getAdminNews({
         page: parseInt(req.params.page),
         count: parseInt(req.params.count)
