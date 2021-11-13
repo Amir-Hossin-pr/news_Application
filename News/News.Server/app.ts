@@ -75,7 +75,7 @@ app.use((err, req, res, next) => { // eslint-disable-line @typescript-eslint/no-
 
 
 
-const server = app.listen(PORT, async function () {
+const server = app.listen(PORT, async() {
     await assertDataBaseOk();
     let port = (server.address() as AddressInfo).port;
     log(`Express server listening on port ${port}`);
