@@ -2,23 +2,31 @@
 import sequlize from "../../dataBase/context/index"
 import { messages } from "../../consts/index"
 
-export default class NewsServices {
-    async getClientNews(page: number, count: number) {
+export class NewsServices {
+    async getClientNews(pagination: PaginationModel) {
         try {
             let news = await sequlize.models.News.findAndCountAll({
                 where: { isActive: true },
-                limit: count,
-                offset: (page * count),
+                limit: pagination.count,
+                offset: (pagination.page * pagination.count),
             });
-            return {
-                status: true,
-                code: 200,
-                title: '?????',
-                list: news.rows,
-                pages: news.count / count
-            }
+            return this.newsList(news, pagination.count);
         } catch {
             return messages.exception
+        }
+    }
+
+    async getAdminNews(pagination: PaginationModel) {
+        try {
+            let news = sequlize.models.News.findAndCountAll({
+                limit: pagination.count,
+                offset: (pagination.page * pagination.count),
+            });
+
+            return this.newsList(news, pagination.count);
+        }
+        catch {
+            return messages.exception;
         }
     }
 
@@ -37,6 +45,16 @@ export default class NewsServices {
             return true;
         } catch {
             return messages.exception
+        }
+    }
+
+    newsList(news, count) {
+        return {
+            status: true,
+            code: 200,
+            title: 'Success',
+            list: news.rows,
+            pages: news.count / count
         }
     }
 }
