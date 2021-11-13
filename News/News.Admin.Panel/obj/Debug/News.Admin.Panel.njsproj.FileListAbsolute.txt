@@ -1,0 +1,2 @@
+D:\project\Teams\Me\news_nodeJs\News\News.Admin.Panel\obj\Debug\News.Admin.Panel.njsproj.CoreCompileInputs.cache
+D:\project\Teams\Me\news_nodeJs\News\News.Admin.Panel\bin\Microsoft.NodejsTools.WebRole.dll

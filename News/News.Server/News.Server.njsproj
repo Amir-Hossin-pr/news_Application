@@ -38,6 +38,8 @@
     <Content Include="dataBase\models\users\role.model.ts" />
     <Content Include="dataBase\models\users\session.model.ts" />
     <Content Include="dataBase\models\users\user.model.ts" />
+    <Content Include="services\news\news.service.ts" />
+    <Content Include="services\user\account.service.ts" />
     <Content Include="tsconfig.json" />
     <Content Include="package.json" />
     <Content Include="README.md" />
@@ -48,11 +50,14 @@
     <Folder Include="dataBase\models\" />
     <Folder Include="dataBase\models\news\" />
     <Folder Include="dataBase\models\users\" />
+    <Folder Include="services\" />
     <Folder Include="public\" />
     <Folder Include="public\images\" />
     <Folder Include="routes\" />
     <Folder Include="routes\admin\" />
     <Folder Include="routes\user\" />
+    <Folder Include="services\news\" />
+    <Folder Include="services\user\" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="dataBase\context\extraSetup.ts">
@@ -62,6 +67,12 @@
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="dataBase\models\news\newsLike.model.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="routes\user\news.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="services\pagination.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
   </ItemGroup>

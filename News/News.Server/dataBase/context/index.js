@@ -21,5 +21,5 @@ for (const modelDefine of modelDefines) {
     modelDefine(sequlize);
 }
 (0, extraSetup_1.applyExtraSetup)(sequlize);
-module.exports = sequlize;
+exports.default = sequlize;
 //# sourceMappingURL=index.js.map

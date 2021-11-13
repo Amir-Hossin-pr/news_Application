@@ -24,4 +24,4 @@ for (const modelDefine of modelDefines) {
 
 applyExtraSetup(sequlize);
 
-module.exports = sequlize;
+export default sequlize;

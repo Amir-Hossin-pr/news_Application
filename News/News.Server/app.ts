@@ -1,3 +1,4 @@
+import { log } from 'console';
 import * as express from 'express';
 import { AddressInfo } from "net";
 import * as path from 'path';
@@ -9,22 +10,22 @@ const app = express();
 app.use(express.static(path.join(__dirname, 'public')));
 
 //data base 
-const sequlize = require("./dataBase/context/index")
+import sequlize from "./dataBase/context/index"
 
 async function assertDataBaseOk() {
-    console.log("Checking Data Base Connection ...");
+    log("Checking Data Base Connection ...");
     try {
         await sequlize.authenticate();
-        console.log("Data Base Connected Successfully!")
+        log("Data Base Connected Successfully!")
     } catch (e) {
-        console.log("Unable to connect to Data Base");
-        console.log(e.message);
+        log("Unable to connect to Data Base");
+        log(e.message);
         process.exit(1);
     }
 }
 
 //routes 
-const news = require("./routes/user/news")
+import news from "./routes/user/news"
 app.use("/news", news);
 
 // catch 404 and forward to error handler
@@ -41,7 +42,7 @@ app.use((req, res, next) => {
 if (app.get('env') === 'development') {
     app.use((err, req, res, next) => { // eslint-disable-line @typescript-eslint/no-unused-vars
         res.status(err['status'] || 500);
-        res.render('error', {
+        res.json({
             message: err.message,
             error: err
         });
@@ -52,7 +53,7 @@ if (app.get('env') === 'development') {
 // no stacktraces leaked to user
 app.use((err, req, res, next) => { // eslint-disable-line @typescript-eslint/no-unused-vars
     res.status(err.status || 500);
-    res.render('error', {
+    res.json({
         message: err.message,
         error: {}
     });
@@ -63,6 +64,6 @@ app.use((err, req, res, next) => { // eslint-disable-line @typescript-eslint/no-
 const server = app.listen(PORT, async function () {
     await assertDataBaseOk();
     let port = (server.address() as AddressInfo).port;
-    console.log(`Express server listening on port ${port}`);
-    console.log(`http://localhost:${port}`)
+    log(`Express server listening on port ${port}`);
+    log(`http://localhost:${port}`)
 });

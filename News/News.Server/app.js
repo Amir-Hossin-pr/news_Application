@@ -9,27 +9,31 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const console_1 = require("console");
 const express = require("express");
 const path = require("path");
 const PORT = 3000;
 const app = express();
 app.use(express.static(path.join(__dirname, 'public')));
 //data base 
-const sequlize = require("./dataBase/context/index");
+const index_1 = require("./dataBase/context/index");
 function assertDataBaseOk() {
     return __awaiter(this, void 0, void 0, function* () {
-        console.log("Checking Data Base Connection ...");
+        (0, console_1.log)("Checking Data Base Connection ...");
         try {
-            yield sequlize.authenticate();
-            console.log("Data Base Connected Successfully!");
+            yield index_1.default.authenticate();
+            (0, console_1.log)("Data Base Connected Successfully!");
         }
         catch (e) {
-            console.log("Unable to connect to Data Base");
-            console.log(e.message);
+            (0, console_1.log)("Unable to connect to Data Base");
+            (0, console_1.log)(e.message);
             process.exit(1);
         }
     });
 }
+//routes 
+const news_1 = require("./routes/user/news");
+app.use("/news", news_1.default);
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
     const err = new Error('Not Found');
@@ -42,7 +46,7 @@ app.use((req, res, next) => {
 if (app.get('env') === 'development') {
     app.use((err, req, res, next) => {
         res.status(err['status'] || 500);
-        res.render('error', {
+        res.json({
             message: err.message,
             error: err
         });
@@ -52,7 +56,7 @@ if (app.get('env') === 'development') {
 // no stacktraces leaked to user
 app.use((err, req, res, next) => {
     res.status(err.status || 500);
-    res.render('error', {
+    res.json({
         message: err.message,
         error: {}
     });
@@ -61,8 +65,8 @@ const server = app.listen(PORT, function () {
     return __awaiter(this, void 0, void 0, function* () {
         yield assertDataBaseOk();
         let port = server.address().port;
-        console.log(`Express server listening on port ${port}`);
-        console.log(`http://localhost:${port}`);
+        (0, console_1.log)(`Express server listening on port ${port}`);
+        (0, console_1.log)(`http://localhost:${port}`);
     });
 });
 //# sourceMappingURL=app.js.map

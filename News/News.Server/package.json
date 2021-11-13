@@ -17,6 +17,7 @@
     "express": "^4.14.0",
     "pug": "^2.0.0-rc.3",
     "sequelize": "^6.9.0",
+    "sequelize-typescript": "^2.1.1",
     "tedious": "^14.0.0"
   },
   "devDependencies": {
