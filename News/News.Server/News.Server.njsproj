@@ -38,6 +38,7 @@
     <Content Include="dataBase\models\users\role.model.ts" />
     <Content Include="dataBase\models\users\session.model.ts" />
     <Content Include="dataBase\models\users\user.model.ts" />
+    <Content Include="public\images\news\45cb6089-bd11-4b65-a95b-4dcae371573d1636824870277.png" />
     <Content Include="services\news\news.service.ts" />
     <Content Include="services\user\account.service.ts" />
     <Content Include="tsconfig.json" />
@@ -51,6 +52,7 @@
     <Folder Include="dataBase\models\news\" />
     <Folder Include="dataBase\models\users\" />
     <Folder Include="consts\" />
+    <Folder Include="public\images\news\" />
     <Folder Include="services\" />
     <Folder Include="public\" />
     <Folder Include="public\images\" />
@@ -80,6 +82,9 @@
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="routes\user\news.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="services\image.service.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="services\pagination.ts">
