@@ -7,7 +7,16 @@ const sequlize = new Sequelize("News_DB", "amir", "1G14ijWA", {
     benchmark: true
 })
 
-const modelDefines = [];
+const modelDefines = [
+    require("../models/news/group.model"),
+    require("../models/news/keys.model"),
+    require("../models/news/news.model"),
+    require("../models/news/newsGroups.model"),
+    require("../models/news/newsLike.model"),
+    require("../models/users/role.model"),
+    require("../models/users/session.model"),
+    require("../models/users/user.model"),
+];
 
 for (const modelDefine of modelDefines) {
     modelDefine(sequlize)
