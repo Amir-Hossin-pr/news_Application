@@ -2,7 +2,6 @@
 import sequlize from "../../dataBase/context/index"
 import { messages } from "../../consts/index"
 import { PaginationModel } from "../pagination";
-import { Model } from "sequelize-typescript";
 
 export class NewsServices {
     async getClientNews(pagination: PaginationModel) {

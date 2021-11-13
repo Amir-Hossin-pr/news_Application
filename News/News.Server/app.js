@@ -12,10 +12,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const console_1 = require("console");
 const express = require("express");
 const path = require("path");
+const bodyParser = require("body-parser");
 const PORT = 3000;
 const app = express();
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
-//data base 
+//data base conntection
 const index_1 = require("./dataBase/context/index");
 function assertDataBaseOk() {
     return __awaiter(this, void 0, void 0, function* () {
@@ -33,7 +36,9 @@ function assertDataBaseOk() {
 }
 //user routes 
 const news_1 = require("./routes/user/news");
+const account_1 = require("./routes/account");
 app.use("/api/news", news_1.default);
+app.use("/api/account", account_1.default);
 //admin routes
 const news_admin_1 = require("./routes/admin/news.admin");
 app.use("/api/admin/news", news_admin_1.default);

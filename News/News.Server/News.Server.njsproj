@@ -73,6 +73,9 @@
     <TypeScriptCompile Include="dataBase\models\news\newsLike.model.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="routes\account.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="routes\admin\news.admin.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>

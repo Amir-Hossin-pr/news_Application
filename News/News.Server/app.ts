@@ -2,14 +2,17 @@ import { log } from 'console';
 import * as express from 'express';
 import { AddressInfo } from "net";
 import * as path from 'path';
+import * as bodyParser from 'body-parser'
 const PORT = 3000;
 
 const app = express();
 
 
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 app.use(express.static(path.join(__dirname, 'public')));
 
-//data base 
+//data base conntection
 import sequlize from "./dataBase/context/index"
 
 async function assertDataBaseOk() {
@@ -24,9 +27,13 @@ async function assertDataBaseOk() {
     }
 }
 
+
 //user routes 
 import news from "./routes/user/news"
+import account from "./routes/account"
+
 app.use("/api/news", news);
+app.use("/api/account", account);
 
 //admin routes
 import newsAdmin from "./routes/admin/news.admin"
