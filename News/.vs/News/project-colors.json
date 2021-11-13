@@ -1,0 +1,26 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "ce8150a9-1ee1-4a1b-8406-4de13386598c": {
+      "ProjectGuid": "ce8150a9-1ee1-4a1b-8406-4de13386598c",
+      "DisplayName": "News.Server",
+      "ColorIndex": 0
+    },
+    "f3c392a0-76ea-4046-90f3-38efa1bb54d1": {
+      "ProjectGuid": "f3c392a0-76ea-4046-90f3-38efa1bb54d1",
+      "DisplayName": "News.Admin.Panel",
+      "ColorIndex": 1
+    },
+    "fc58f935-ae48-44e4-a7c5-246bea66157a": {
+      "ProjectGuid": "fc58f935-ae48-44e4-a7c5-246bea66157a",
+      "DisplayName": "News.User.Panel",
+      "ColorIndex": 2
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 3
+}

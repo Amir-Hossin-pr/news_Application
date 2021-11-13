@@ -31,8 +31,6 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="app.ts" />
-    <None Include="routes\index.ts" />
-    <None Include="routes\user.ts" />
     <Content Include="tsconfig.json" />
     <Content Include="package.json" />
     <Content Include="README.md" />
@@ -44,6 +42,13 @@
     <Folder Include="public\" />
     <Folder Include="public\images\" />
     <Folder Include="routes\" />
+    <Folder Include="routes\admin\" />
+    <Folder Include="routes\user\" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="dataBase\context\index.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
   <ProjectExtensions>
