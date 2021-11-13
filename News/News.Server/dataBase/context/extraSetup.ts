@@ -1,6 +1,6 @@
 import { Sequelize } from "sequelize/types";
 
-export function applyExtraSetup(sequlize: Sequelize) {
+function applyExtraSetup(sequlize: Sequelize) {
     const { News, Keys, NewsGroups, Group, Role, Session, User, NewsLike } =
         sequlize.models;
 
@@ -24,7 +24,7 @@ export function applyExtraSetup(sequlize: Sequelize) {
     NewsLike.belongsTo(News);
 
     User.hasMany(NewsLike);
-    NewsLike.belongsTo(User)
+    NewsLike.belongsTo(User);
 }
 
-module.exports = { applyExtraSetup };
+export default applyExtraSetup;
