@@ -8,9 +8,12 @@ const PORT = 3000;
 const app = express();
 
 
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
+
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.json({ limit: '100mb' }))
+app.use(express.urlencoded({ limit: '100mb' }))
+app.use(bodyParser.urlencoded({ extended: true, limit:'100mb' }))
+app.use(bodyParser.json({ limit : '100mb' }))
 
 //data base conntection
 import sequlize from "./dataBase/context/index"
