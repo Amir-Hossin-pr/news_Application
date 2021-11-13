@@ -1,3 +1,2 @@
-D:\project\Teams\Me\news_nodeJs\News\News.Server\obj\Debug\News.Server.njsproj.AssemblyReference.cache
 D:\project\Teams\Me\news_nodeJs\News\News.Server\obj\Debug\News.Server.njsproj.CoreCompileInputs.cache
 D:\project\Teams\Me\news_nodeJs\News\News.Server\bin\Microsoft.NodejsTools.WebRole.dll
