@@ -43,7 +43,7 @@ export class NewsServices {
         }
     }
 
-    async createNews(news) {
+    async createNews(news: NewsModel) {
         try {
             await sequlize.models.News.create(news);
             return true;
@@ -62,3 +62,11 @@ export class NewsServices {
     }
 }
 
+type NewsModel = {
+    id?: number;
+    title: string;
+    shortDescription: string;
+    text: string;
+    base64: string;
+    isActive: boolean;
+}
