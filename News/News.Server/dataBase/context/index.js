@@ -20,6 +20,7 @@ const modelDefines = [
 for (const modelDefine of modelDefines) {
     modelDefine(sequlize);
 }
-(0, extraSetup_1.applyExtraSetup)(sequlize);
+(0, extraSetup_1.default)(sequlize);
+//sequlize.sync({ force: true })
 exports.default = sequlize;
 //# sourceMappingURL=index.js.map

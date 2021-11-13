@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_1 = require("sequelize");
+const sequelize_typescript_1 = require("sequelize-typescript");
 module.exports = (sequelize) => {
     sequelize.define("User", {
         id: {
@@ -38,6 +39,10 @@ module.exports = (sequelize) => {
         isActive: {
             type: sequelize_1.DataTypes.BOOLEAN,
             allowNull: false,
+        },
+        image: {
+            type: sequelize_typescript_1.DataType.STRING,
+            allowNull: true
         },
         registerDate: {
             type: sequelize_1.DataTypes.DATE,

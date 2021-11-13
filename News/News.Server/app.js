@@ -38,7 +38,7 @@ function assertDataBaseOk() {
 }
 //user routes 
 const news_1 = require("./routes/user/news");
-const account_1 = require("./routes/account");
+const account_1 = require("./routes/account/account");
 app.use("/api/news", news_1.default);
 app.use("/api/account", account_1.default);
 //admin routes
@@ -71,12 +71,10 @@ app.use((err, req, res, next) => {
         error: {}
     });
 });
-const server = app.listen(PORT, function () {
-    return __awaiter(this, void 0, void 0, function* () {
-        yield assertDataBaseOk();
-        let port = server.address().port;
-        (0, console_1.log)(`Express server listening on port ${port}`);
-        (0, console_1.log)(`http://localhost:${port}`);
-    });
-});
+const server = app.listen(PORT, () => __awaiter(void 0, void 0, void 0, function* () {
+    yield assertDataBaseOk();
+    let port = server.address().port;
+    (0, console_1.log)(`Express server listening on port ${port}`);
+    (0, console_1.log)(`http://localhost:${port}`);
+}));
 //# sourceMappingURL=app.js.map
