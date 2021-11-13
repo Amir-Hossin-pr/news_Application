@@ -48,7 +48,18 @@ router.post("/create", async (req: express.Request, res: express.Response) => {
 })
 
 router.post("/update", async (req: express.Request, res: express.Response) => {
+    let body = req.body;
 
+    let updated = await newsServices.createNews({
+        id: body.id,
+        title: body.title,
+        isActive: body.isActive,
+        shortDescription: body.shortDescription,
+        text: body.text,
+        base64: body.base64
+    })
+    res.json(updated);
+    res.end();
 })
 
 router.post("/delete", async (req: express.Request, res: express.Response) => {
