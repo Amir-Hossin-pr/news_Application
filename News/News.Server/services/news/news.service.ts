@@ -1,24 +1,46 @@
 
 import sequlize from "../../dataBase/context/index"
 import { messages } from "../../consts/index"
+import { PaginationModel } from "../pagination";
+import { Model } from "sequelize-typescript";
 
-export default class NewsServices {
-    async getClientNews(page: number, count: number) {
+export class NewsServices {
+    async getClientNews(pagination: PaginationModel) {
         try {
             let news = await sequlize.models.News.findAndCountAll({
                 where: { isActive: true },
-                limit: count,
-                offset: (page * count),
+                limit: pagination.count,
+                offset: (pagination.page * pagination.count),
             });
             return {
                 status: true,
                 code: 200,
-                title: '?????',
+                title: 'Success',
                 list: news.rows,
-                pages: news.count / count
+                pages: news.count / pagination.count
             }
         } catch {
             return messages.exception
+        }
+    }
+
+    async getAdminNews(pagination: PaginationModel) {
+        try {
+            let news = await sequlize.models.News.findAndCountAll({
+                limit: pagination.count,
+                offset: (pagination.page * pagination.count),
+            });
+
+            return {
+                status: true,
+                code: 200,
+                title: 'Success',
+                list: news.rows,
+                pages: news.count / pagination.count
+            }
+        }
+        catch {
+            return messages.exception;
         }
     }
 

@@ -9,35 +9,47 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.AccountService = void 0;
 const index_1 = require("../../dataBase/context/index");
-function login(user) {
-    return __awaiter(this, void 0, void 0, function* () {
-        let findUser = yield index_1.default.models.User.findOne({});
-        if (findUser != null) { }
-        return { status: false, title: "حساب کاربری با این مشخصات یافت نشد" };
-    });
+class AccountService {
+    login(user) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let findUser = yield index_1.default.models.User.findOne({});
+            if (findUser != null) { }
+            return { status: false, title: "حساب کاربری با این مشخصات یافت نشد" };
+        });
+    }
+    signup(user) {
+        return __awaiter(this, void 0, void 0, function* () { });
+    }
+    logout(req) {
+        return __awaiter(this, void 0, void 0, function* () { });
+    }
+    activateion(user) {
+        return __awaiter(this, void 0, void 0, function* () { });
+    }
+    changePassword(user) {
+        return __awaiter(this, void 0, void 0, function* () { });
+    }
+    forgotPassword(user) {
+        return __awaiter(this, void 0, void 0, function* () { });
+    }
+    getUser(headers) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let sessionValue = headers["authorization"];
+            if (sessionValue != null) {
+                let session = yield index_1.default.models.Session.findOne({ where: { value: sessionValue } });
+                if (session != null) {
+                    let user = yield index_1.default.models.User.findOne({ where: { id: session.get().UserId } });
+                    return user.get();
+                }
+                else {
+                    return null;
+                }
+            }
+            return null;
+        });
+    }
 }
-function signup(user) {
-    return __awaiter(this, void 0, void 0, function* () { });
-}
-function logout(req) {
-    return __awaiter(this, void 0, void 0, function* () { });
-}
-function activateion(user) {
-    return __awaiter(this, void 0, void 0, function* () { });
-}
-function changePassword(user) {
-    return __awaiter(this, void 0, void 0, function* () { });
-}
-function forgotPassword(user) {
-    return __awaiter(this, void 0, void 0, function* () { });
-}
-module.exports = {
-    login,
-    signup,
-    changePassword,
-    activateion,
-    forgotPassword,
-    logout,
-};
+exports.AccountService = AccountService;
 //# sourceMappingURL=account.service.js.map

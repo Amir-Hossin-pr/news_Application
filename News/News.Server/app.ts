@@ -24,9 +24,13 @@ async function assertDataBaseOk() {
     }
 }
 
-//routes 
+//user routes 
 import news from "./routes/user/news"
-app.use("/news", news);
+app.use("/api/news", news);
+
+//admin routes
+import newsAdmin from "./routes/admin/news.admin"
+app.use("/api/admin/news", newsAdmin)
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

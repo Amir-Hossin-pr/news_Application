@@ -9,25 +9,48 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const console_1 = require("console");
+exports.NewsServices = void 0;
 const index_1 = require("../../dataBase/context/index");
+const index_2 = require("../../consts/index");
 class NewsServices {
-    getClientNews(page, count) {
+    getClientNews(pagination) {
         return __awaiter(this, void 0, void 0, function* () {
-            (0, console_1.log)({ page, count });
             try {
                 let news = yield index_1.default.models.News.findAndCountAll({
                     where: { isActive: true },
-                    limit: count,
-                    offset: (page * count),
+                    limit: pagination.count,
+                    offset: (pagination.page * pagination.count),
                 });
                 return {
+                    status: true,
+                    code: 200,
+                    title: 'Success',
                     list: news.rows,
-                    pages: news.count / count
+                    pages: news.count / pagination.count
                 };
             }
-            catch (err) {
-                console.log(err.message);
+            catch (_a) {
+                return index_2.messages.exception;
+            }
+        });
+    }
+    getAdminNews(pagination) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                let news = yield index_1.default.models.News.findAndCountAll({
+                    limit: pagination.count,
+                    offset: (pagination.page * pagination.count),
+                });
+                return {
+                    status: true,
+                    code: 200,
+                    title: 'Success',
+                    list: news.rows,
+                    pages: news.count / pagination.count
+                };
+            }
+            catch (_a) {
+                return index_2.messages.exception;
             }
         });
     }
@@ -38,7 +61,7 @@ class NewsServices {
                 return true;
             }
             catch (_a) {
-                return false;
+                return index_2.messages.exception;
             }
         });
     }
@@ -49,10 +72,10 @@ class NewsServices {
                 return true;
             }
             catch (_a) {
-                return false;
+                return index_2.messages.exception;
             }
         });
     }
 }
-exports.default = NewsServices;
+exports.NewsServices = NewsServices;
 //# sourceMappingURL=news.service.js.map
