@@ -2,6 +2,7 @@
 import sequlize from "../../dataBase/context/index"
 import { messages } from "../../consts/index"
 import { PaginationModel } from "../pagination";
+import { saveImage } from "../image.service"
 
 export class NewsServices {
     async getClientNews(pagination: PaginationModel) {
@@ -45,7 +46,18 @@ export class NewsServices {
 
     async createNews(news: NewsModel) {
         try {
-            await sequlize.models.News.create(news);
+            let image = await saveImage({
+                base64: news.base64,
+                path : "news"
+            })
+
+            await sequlize.models.News.create({
+                title: news.title,
+                shortDescription: news.shortDescription,
+                isActive: news.isActive,
+                text: news.text,
+                image: image
+            });
             return true;
         } catch {
             return messages.exception
@@ -60,6 +72,7 @@ export class NewsServices {
             return messages.exception
         }
     }
+
 }
 
 type NewsModel = {
