@@ -31,6 +31,13 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="app.ts" />
+    <Content Include="dataBase\models\news\group.model.ts" />
+    <Content Include="dataBase\models\news\keys.model.ts" />
+    <Content Include="dataBase\models\news\news.model.ts" />
+    <Content Include="dataBase\models\news\newsGroups.model.ts" />
+    <Content Include="dataBase\models\users\role.model.ts" />
+    <Content Include="dataBase\models\users\session.model.ts" />
+    <Content Include="dataBase\models\users\user.model.ts" />
     <Content Include="tsconfig.json" />
     <Content Include="package.json" />
     <Content Include="README.md" />
@@ -39,6 +46,8 @@
     <Folder Include="dataBase\" />
     <Folder Include="dataBase\context\" />
     <Folder Include="dataBase\models\" />
+    <Folder Include="dataBase\models\news\" />
+    <Folder Include="dataBase\models\users\" />
     <Folder Include="public\" />
     <Folder Include="public\images\" />
     <Folder Include="routes\" />
@@ -46,6 +55,9 @@
     <Folder Include="routes\user\" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="dataBase\context\extraSetup.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="dataBase\context\index.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
