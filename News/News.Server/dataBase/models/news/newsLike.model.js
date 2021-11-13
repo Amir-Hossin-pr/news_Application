@@ -7,9 +7,8 @@ module.exports = (sequlize) => {
             type: sequelize_1.DataTypes.INTEGER,
             allowNull: false,
             autoIncrement: true,
-            autoIncrementIdentity: true,
             primaryKey: true
-        }
+        },
     });
 };
 //# sourceMappingURL=newsLike.model.js.map

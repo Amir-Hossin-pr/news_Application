@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.applyExtraSetup = void 0;
 function applyExtraSetup(sequlize) {
     const { News, Keys, NewsGroups, Group, Role, Session, User, NewsLike } = sequlize.models;
     News.hasMany(Keys);
@@ -18,6 +17,5 @@ function applyExtraSetup(sequlize) {
     User.hasMany(NewsLike);
     NewsLike.belongsTo(User);
 }
-exports.applyExtraSetup = applyExtraSetup;
-module.exports = { applyExtraSetup };
+exports.default = applyExtraSetup;
 //# sourceMappingURL=extraSetup.js.map

@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.NewsServices = void 0;
 const index_1 = require("../../dataBase/context/index");
 const index_2 = require("../../consts/index");
+const image_service_1 = require("../image.service");
 class NewsServices {
     getClientNews(pagination) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -57,7 +58,17 @@ class NewsServices {
     createNews(news) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                yield index_1.default.models.News.create(news);
+                let image = yield (0, image_service_1.saveImage)({
+                    base64: news.base64,
+                    path: "news"
+                });
+                yield index_1.default.models.News.create({
+                    title: news.title,
+                    shortDescription: news.shortDescription,
+                    isActive: news.isActive,
+                    text: news.text,
+                    image: image
+                });
                 return true;
             }
             catch (_a) {

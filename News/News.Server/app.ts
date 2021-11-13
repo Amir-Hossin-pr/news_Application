@@ -8,9 +8,12 @@ const PORT = 3000;
 const app = express();
 
 
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
+
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.json({ limit: '100mb' }))
+app.use(express.urlencoded({ limit: '100mb' }))
+app.use(bodyParser.urlencoded({ extended: true, limit: '100mb' }))
+app.use(bodyParser.json({ limit: '100mb' }))
 
 //data base conntection
 import sequlize from "./dataBase/context/index"
@@ -30,7 +33,7 @@ async function assertDataBaseOk() {
 
 //user routes 
 import news from "./routes/user/news"
-import account from "./routes/account"
+import account from "./routes/account/account"
 
 app.use("/api/news", news);
 app.use("/api/account", account);
@@ -72,7 +75,7 @@ app.use((err, req, res, next) => { // eslint-disable-line @typescript-eslint/no-
 
 
 
-const server = app.listen(PORT, async function () {
+const server = app.listen(PORT, async () => {
     await assertDataBaseOk();
     let port = (server.address() as AddressInfo).port;
     log(`Express server listening on port ${port}`);

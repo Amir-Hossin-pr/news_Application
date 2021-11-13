@@ -10,13 +10,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
-const route = express.Router();
+const router = express.Router();
 const index_1 = require("../../consts/index");
 const account_service_1 = require("../../services/user/account.service");
 const news_service_1 = require("../../services/news/news.service");
 const accountServices = new account_service_1.AccountService();
 const newsServices = new news_service_1.NewsServices();
-route.use((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+router.use((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     let user = yield accountServices.getUser(req.headers);
     if (user != null) {
         if (user.RoleId == 1) {
@@ -32,7 +32,7 @@ route.use((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
         res.end();
     }
 }));
-route.get("/getNews/:page/:count", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.get("/:page/:count", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     let news = yield newsServices.getAdminNews({
         page: parseInt(req.params.page),
         count: parseInt(req.params.count)
@@ -40,5 +40,32 @@ route.get("/getNews/:page/:count", (req, res) => __awaiter(void 0, void 0, void 
     res.json(news);
     res.end();
 }));
-exports.default = route;
+router.post("/create", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    let body = req.body;
+    let creaeted = yield newsServices.createNews({
+        title: body.title,
+        isActive: body.isActive,
+        shortDescription: body.shortDescription,
+        text: body.text,
+        base64: body.base64
+    });
+    res.json(creaeted);
+    res.end();
+}));
+router.post("/update", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    let body = req.body;
+    let updated = yield newsServices.createNews({
+        id: body.id,
+        title: body.title,
+        isActive: body.isActive,
+        shortDescription: body.shortDescription,
+        text: body.text,
+        base64: body.base64
+    });
+    res.json(updated);
+    res.end();
+}));
+router.post("/delete", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+}));
+exports.default = router;
 //# sourceMappingURL=news.admin.js.map
