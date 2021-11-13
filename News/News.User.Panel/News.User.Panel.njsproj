@@ -48,7 +48,11 @@
     <Folder Include="src\" />
     <Folder Include="src\assets\" />
     <Folder Include="src\components\" />
+    <Folder Include="src\store\" />
+    <Folder Include="src\router\" />
     <Folder Include="src\plugins\" />
+    <Folder Include="src\router\middleware\" />
+    <Folder Include="src\router\middleware\middlewares\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="src\main.ts" />
@@ -60,7 +64,22 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="src\plugins\vuetify.ts" />
+    <TypeScriptCompile Include="src\router\index.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\router\middleware\middlewarePipeline.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\router\middleware\middlewares\auth.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="src\router\middleware\middlewares\guest.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="src\shims-vuetify.d.ts" />
+    <TypeScriptCompile Include="src\store\index.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\Node.js Tools\Microsoft.NodejsToolsV2.targets" />
   <ProjectExtensions>

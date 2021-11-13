@@ -31,9 +31,12 @@ function assertDataBaseOk() {
         }
     });
 }
-//routes 
+//user routes 
 const news_1 = require("./routes/user/news");
-app.use("/news", news_1.default);
+app.use("/api/news", news_1.default);
+//admin routes
+const news_admin_1 = require("./routes/admin/news.admin");
+app.use("/api/admin/news", news_admin_1.default);
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
     const err = new Error('Not Found');
