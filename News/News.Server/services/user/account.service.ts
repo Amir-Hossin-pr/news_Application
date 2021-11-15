@@ -124,7 +124,10 @@ export class AccountService {
       } 
     }
     
-    createActiveCode(){}
+    createActiveCode(){
+      let random = crypto.randomUUID().toString().replace("-","");
+      return random[1..6]
+    }
 }
 
 type UserSignup={
