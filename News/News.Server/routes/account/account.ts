@@ -16,7 +16,10 @@ router.post("/login", async (req: express.Request, res: express.Response) => {
 })
 
 router.post("/signup", async (req: express.Request, res: express.Response) => {
-
+let user = {};
+let signup = await accountService.signUp(user);
+res.json(signup);
+res.end();
 })
 
 router.post("/forgotPassword", async (req: express.Request, res: express.Response) => {
