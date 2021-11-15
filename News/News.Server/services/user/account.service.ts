@@ -42,7 +42,20 @@ export class AccountService {
         }
     }
 
-    async signup(user) { }
+    async signup(user:UserSignup) { 
+      try{
+        let existUser = await this.getUserByUserName(user.userName);
+      if(user == null){
+        let newUser = this.createUser(user);
+        await sequlize.models.User.create(newUser)
+        return messages.success("Signup Successfully", "please chek your email and active account")
+      } 
+      return messages.userExist; 
+      } 
+      catch{
+        return messages.exception;
+      } 
+    }
 
     async logout(header: IncomingHttpHeaders) {
         try {
@@ -83,6 +96,10 @@ export class AccountService {
         }
         return null;
     }
+    
+    async getUserByUserName(userName:string){
+      
+    } 
 
     createSession() {
         let newId = crypto.randomUUID() + "-" + crypto.randomUUID();
@@ -93,4 +110,31 @@ export class AccountService {
     createHash(string: string) {
         return crypto.createHash("sha256").update(string, "binary").digest("base64");
     }
+    
+    createUser(user:UserSignup){
+      return
+      {
+        userName:user.userName,
+        password:this.createHash(user.password),
+        mobileNo:user.mobileNo,
+        activeCode:this.createActiveCode(),
+        isActive:false, 
+        image:"null.png",
+        fullName:user.fullName
+      } 
+    }
+    
+    createActiveCode(){}
 }
+
+type UserSignup={
+  userName:string;
+  fullName:string;
+  mobileNo:string;
+  password:string;
+} 
+
+type ActivationAccount ={
+  userName:string;
+  activeCode:string;
+} 
