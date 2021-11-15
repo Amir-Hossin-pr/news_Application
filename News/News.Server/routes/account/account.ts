@@ -16,7 +16,14 @@ router.post("/login", async (req: express.Request, res: express.Response) => {
 })
 
 router.post("/signup", async (req: express.Request, res: express.Response) => {
-let user = {};
+  let body = req.body;
+let user:UserSignup = {
+  userName:body.userName,
+  fullName:body.fullName,
+  password:body.password, 
+  email:body.email,
+  mobileNo:body.mobileNo
+};
 let signup = await accountService.signUp(user);
 res.json(signup);
 res.end();
