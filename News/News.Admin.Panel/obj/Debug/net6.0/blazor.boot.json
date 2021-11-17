@@ -197,13 +197,13 @@
       "mscorlib.dll": "sha256-tlYWYAypJO+6gsCjV734iAJn8xcZYhUjM7vgxDLJluE=",
       "netstandard.dll": "sha256-E48Na3ZQWKExltzTwgP0Ao+UqWhiVYeerXfUL9lEc+c=",
       "System.Private.CoreLib.dll": "sha256-J85Z1XnwapHef31sR58JFq+0HrFP5BjOoObPKjdFHCw=",
-      "News.Admin.Panel.dll": "sha256-yppZKyvEbnGmCTxvbjP2Mo14TQ35\/h2xoap7tKSKMew="
+      "News.Admin.Panel.dll": "sha256-S0SUtKGfrp4T4NGHxku8gSboe3g84oY5n2\/Gy\/nxW2c="
     },
     "extensions": null,
     "lazyAssembly": null,
     "libraryInitializers": null,
     "pdb": {
-      "News.Admin.Panel.pdb": "sha256-dD92oBCtJbzEutfH623RdpiQaYT\/LojiCF7G2DKt5R0="
+      "News.Admin.Panel.pdb": "sha256-8S2gXWHYGh\/nhC+ADK62eOFgVixdAnU0rHxaXTC\/Cr0="
     },
     "runtime": {
       "dotnet.6.0.0.8y0unhgqld.js": "sha256-LOq52qjRa3+zt3w4UL10rS3UdwHxVQxW0JAsMPO9QAM=",

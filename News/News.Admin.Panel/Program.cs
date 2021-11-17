@@ -4,7 +4,7 @@ builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
-builder.Services.AddMatBlazor();
-builder.Services.AddMatToaster();
+
+Services.RegisterServices(builder.Services);
 
 await builder.Build().RunAsync();

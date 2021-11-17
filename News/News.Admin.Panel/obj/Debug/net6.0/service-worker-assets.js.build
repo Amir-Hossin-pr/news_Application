@@ -865,11 +865,11 @@
       "url": "_framework\/icudt_no_CJK.dat"
     },
     {
-      "hash": "sha256-xIPlCzSjOekjvC789ciCedx+s2ENVBPe4dLrTBNwQow=",
+      "hash": "sha256-dxgmxJ9g9fz\/f2RMSdNg8laPzbCsEmsoR5pg\/2H9jx0=",
       "url": "_framework\/News.Admin.Panel.dll"
     },
     {
-      "hash": "sha256-gERVQpI2ENhruGhAUV7a9e+2yTEy\/sBE9NdiGgg\/Ghc=",
+      "hash": "sha256-raFjvrPJAXgp8VlgZQdXylkcz\/dW9RBw3BrvXN9Qj0I=",
       "url": "_framework\/News.Admin.Panel.pdb"
     },
     {
@@ -877,7 +877,7 @@
       "url": "_framework\/blazor.webassembly.js"
     },
     {
-      "hash": "sha256-uD6YaUOkwe\/LPropVlUg2v7AM3k8ZlZnOEdYwBPnjvM=",
+      "hash": "sha256-KcCjEbGG+4irKMrwweR6KLBPGxupiCs6HYQXM66iIAI=",
       "url": "_framework\/blazor.boot.json"
     },
     {
@@ -889,5 +889,5 @@
       "url": "_content\/MatBlazor\/dist\/matBlazor.js"
     }
   ],
-  "version": "SSPDwE5t"
+  "version": "V5+Vn75Q"
 };
