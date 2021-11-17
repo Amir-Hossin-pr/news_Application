@@ -39,8 +39,10 @@ function assertDataBaseOk() {
 //user routes 
 const news_1 = require("./routes/user/news");
 const account_1 = require("./routes/account/account");
+const profile_1 = require("./routes/account/profile");
 app.use("/api/news", news_1.default);
 app.use("/api/account", account_1.default);
+app.use("/api/profile", profile_1.default);
 //admin routes
 const news_admin_1 = require("./routes/admin/news.admin");
 app.use("/api/admin/news", news_admin_1.default);

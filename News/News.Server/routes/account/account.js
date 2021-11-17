@@ -23,12 +23,28 @@ router.post("/login", (req, res) => __awaiter(void 0, void 0, void 0, function* 
     res.json(login);
 }));
 router.post("/signup", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    let body = req.body;
+    let user = {
+        userName: body.userName,
+        fullName: body.fullName,
+        password: body.password,
+        email: body.email,
+        mobileNo: body.mobileNo
+    };
+    let signup = yield accountService.signup(user);
+    res.json(signup);
+    res.end();
 }));
-router.post("/forgotPassword", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-}));
-router.post("/changePassword", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-}));
+router.post("/forgotPassword", (req, res) => __awaiter(void 0, void 0, void 0, function* () { }));
+router.post("/changePassword", (req, res) => __awaiter(void 0, void 0, void 0, function* () { }));
 router.post("/activation", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    let body = req.body;
+    let activation = {
+        userName: body.userName,
+        activeCode: body.activeCode
+    };
+    res.json(yield accountService.activateion(activation));
+    res.end();
 }));
 router.get("/logout", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     return accountService.logout(req.headers) ?
@@ -38,7 +54,7 @@ router.get("/logout", (req, res) => __awaiter(void 0, void 0, void 0, function* 
             title: 'Success',
             message: 'Logout Successfully'
         }) :
-        res.json(consts_1.messages.exception);
+        res.json(consts_1.messages.exception("Exception"));
 }));
 exports.default = router;
 //# sourceMappingURL=account.js.map
