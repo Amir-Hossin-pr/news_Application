@@ -38,7 +38,16 @@ router.post("/forgotPassword", async (req: express.Request, res: express.Respons
 
 router.post("/changePassword", async (req: express.Request, res: express.Response) => { })
 
-router.post("/activation", async (req: express.Request, res: express.Response) => { })
+router.post("/activation", async (req: express.Request, res: express.Response) => {
+    let body = req.body;
+    let activation = {
+        userName: body.userName,
+        activeCode: body.activeCode
+    }
+
+    res.json(await accountService.activateion(activation))
+    res.end();
+})
 
 router.get("/logout", async (req: express.Request, res: express.Response) => {
     return accountService.logout(req.headers) ?
@@ -48,7 +57,7 @@ router.get("/logout", async (req: express.Request, res: express.Response) => {
             title: 'Success',
             message: 'Logout Successfully'
         }) :
-        res.json(messages.exception)
+        res.json(messages.exception("Exception"))
 })
 
 export default router;
