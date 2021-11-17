@@ -6,6 +6,7 @@ import * as crypto from 'crypto'
 import {
     messages
 } from "../../consts/index"
+import { log } from "console";
 
 
 export class AccountService {
@@ -45,15 +46,14 @@ export class AccountService {
                 title: "حساب کاربری با این مشخصات یافت نشد"
             }
         } catch (e) {
-            console.log(e.message);
-            return messages.exception;
+            return messages.exception(e.message);
         }
     }
 
     async signup(user: UserSignup) {
         try {
             let existUser = await this.getUserByUserName(user.userName);
-            if (user == null) {
+            if (existUser == null) {
                 let newUser = this.createUser(user);
                 await sequlize.models.User.create(newUser)
                 return messages.success({
@@ -64,8 +64,8 @@ export class AccountService {
             }
             return messages.userExist;
         }
-        catch {
-            return messages.exception;
+        catch (e) {
+            return messages.exception(e.message);
         }
     }
 
@@ -85,7 +85,34 @@ export class AccountService {
         }
     }
 
-    async activateion(user) { }
+    async activateion(activation: ActivationAccount) {
+        try {
+            let user = await this.getUserByUserName(activation.userName);
+            if (user != null) {
+                const success = {
+                    title: 'Success',
+                    message: 'Activation Account is Successfully',
+                    result: {}
+                };
+                if (user.isActive != true) {
+
+                    if (user.activeCode == activation.activeCode) {
+                        await user.update({
+                            isActive: true,
+                            registerDate: Date.now(),
+                            activeCode: this.createActiveCode(),
+                        })
+                        return messages.success(success)
+                    }
+                    return messages.accessDenied('Wrong Active Code');
+                }
+                return messages.success(success)
+            }
+            return messages.userNotFound;
+        } catch (e) {
+            return messages.exception(e.message)
+        }
+    }
 
     async changePassword(user) { }
 
@@ -105,19 +132,35 @@ export class AccountService {
     }
 
     async getSession(headers: IncomingHttpHeaders) {
-        let sessionValue: string = headers["authorization"];
+        let sessionValue: string = headers["authorization"];       
         if (sessionValue != null) {
             let session = await sequlize.models.Session.findOne({
                 where: {
                     value: sessionValue
                 }
             });
-            return session.get();
+            return session != null ? await session.get() : null;
         }
         return null;
     }
 
-    async getUserByUserName(userName: string) { }
+    async getUserByUserName(userName: string) {
+        let user = await sequlize.models.User.findOne({
+            where: {
+                userName: userName
+            }
+        })
+
+        if (user == null) {
+            user = await sequlize.models.User.findOne({
+                where: {
+                    mobileNo: userName
+                }
+            })
+        }
+
+        return user != null ? await user.get() : null;
+    }
 
     createSession() {
         let newId = crypto.randomUUID() + "-" + crypto.randomUUID();
@@ -130,16 +173,18 @@ export class AccountService {
     }
 
     createUser(user: UserSignup): User {
-        return
+        let createdUser: User =
         {
-            userName: user.userName;
-            password: this.createHash(user.password);
-            mobileNo: user.mobileNo;
-            activeCode: this.createActiveCode();
-            isActive: false;
-            image: "null.png";
-            fullName: user.fullName
+            userName: user.userName,
+            password: this.createHash(user.password),
+            mobileNo: user.mobileNo,
+            activeCode: this.createActiveCode(),
+            isActive: false,
+            image: "null.png",
+            fullName: user.fullName,
+            registerDate: Date.now()
         }
+        return createdUser;
     }
 
     createActiveCode() {
@@ -155,6 +200,7 @@ type UserSignup = {
     password: string;
 }
 
+
 type ActivationAccount = {
     userName: string;
     activeCode: string;
@@ -165,8 +211,8 @@ type User = {
     password: string;
     mobileNo: string;
     activeCode: string;
-    isActive: string;
+    isActive: boolean;
     image: string;
     fullName: string;
-
+    registerDate: number;
 }
