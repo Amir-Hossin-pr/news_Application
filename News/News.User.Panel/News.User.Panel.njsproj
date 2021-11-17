@@ -67,13 +67,13 @@
     <TypeScriptCompile Include="src\router\index.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="src\router\middleware\middlewarePipeline.ts">
+    <TypeScriptCompile Include="src\router\middlewarePipeline.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="src\router\middleware\middlewares\auth.ts">
+    <TypeScriptCompile Include="src\router\middleware\auth.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="src\router\middleware\middlewares\guest.ts">
+    <TypeScriptCompile Include="src\router\middleware\guest.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="src\shims-vuetify.d.ts" />

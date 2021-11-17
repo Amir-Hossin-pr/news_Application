@@ -17,7 +17,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "User", "User", "{479889E5-2
 EndProject
 Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "News.User.Panel", "News.User.Panel\News.User.Panel.njsproj", "{FC58F935-AE48-44E4-A7C5-246BEA66157A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "News.Admin.Panel", "News.Admin.Panel\News.Admin.Panel.csproj", "{F0DA907F-D8E6-421B-945A-0BA3A1FB7A5B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "News.Admin.Panel", "News.Admin.Panel\News.Admin.Panel.csproj", "{F0DA907F-D8E6-421B-945A-0BA3A1FB7A5B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
