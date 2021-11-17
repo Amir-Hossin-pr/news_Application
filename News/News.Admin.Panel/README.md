@@ -1,3 +1,0 @@
-w# News.Admin.Panel
-
-
