@@ -2,6 +2,7 @@ import VueRouter, { NavigationGuardNext, Route, RouteConfig, RouterOptions } fro
 import Vue from "vue"
 import store from "../store/index"
 import pipeLine from "./middlewarePipeline"
+import auth from "./middleware/auth"
 
 Vue.use(VueRouter)
 
@@ -20,7 +21,7 @@ const routes: Array<RouteConfig> = [
         component: () => import("@/layout/account.vue"),
         meta: (route: Route) => ({
             title: 'Account',
-            route: route
+            route: route,
         }),
         children: [
             {
@@ -29,7 +30,8 @@ const routes: Array<RouteConfig> = [
                 component: () => import("@/pages/account/Profile.vue"),
                 meta: (route: Route) => ({
                     title: 'Profile',
-                    route: route
+                    route: route,
+                    middleware: auth
                 }),
             }
         ]
@@ -44,10 +46,10 @@ router.beforeEach((to: any, from: Route, next: NavigationGuardNext<Vue>) => {
     let meta = to.meta(to)
 
     if (!meta.middleware) {
-        next();
+       return next();
     }
 
-    const middleware = meta.middelware;
+    const middleware = meta.middleware;
     const context = {
         to, from, next, store
     }
