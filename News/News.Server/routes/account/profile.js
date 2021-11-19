@@ -11,9 +11,20 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const express = require("express");
 const router = express.Router();
+const profile_service_1 = require("../../services/user/profile.service");
+const profileService = new profile_service_1.ProfileService();
 router.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    let profile = yield profileService.getProfile(req.headers);
+    res.json(profile);
+    res.end();
 }));
 router.post("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    let body = req.body;
+    res.json(yield profileService.updateProfile(req.headers, {
+        base64: body.base64,
+        fullName: body.fullName
+    }));
+    res.end();
 }));
 exports.default = router;
 //# sourceMappingURL=profile.js.map

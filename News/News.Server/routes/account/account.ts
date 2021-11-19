@@ -1,7 +1,11 @@
 import * as express from 'express'
-import { messages } from '../../consts';
+import {
+    messages
+} from '../../consts';
 const router = express.Router();
-import { AccountService } from "../../services/user/account.service";
+import {
+    AccountService
+} from "../../services/user/account.service";
 
 const accountService = new AccountService();
 
@@ -16,19 +20,33 @@ router.post("/login", async (req: express.Request, res: express.Response) => {
 })
 
 router.post("/signup", async (req: express.Request, res: express.Response) => {
+    let body = req.body;
+    let user = {
+        userName: body.userName,
+        fullName: body.fullName,
+        password: body.password,
+        email: body.email,
+        mobileNo: body.mobileNo
+    };
 
+    let signup = await accountService.signup(user);
+    res.json(signup);
+    res.end();
 })
 
-router.post("/forgotPassword", async (req: express.Request, res: express.Response) => {
+router.post("/forgotPassword", async (req: express.Request, res: express.Response) => { })
 
-})
-
-router.post("/changePassword", async (req: express.Request, res: express.Response) => {
-
-})
+router.post("/changePassword", async (req: express.Request, res: express.Response) => { })
 
 router.post("/activation", async (req: express.Request, res: express.Response) => {
+    let body = req.body;
+    let activation = {
+        userName: body.userName,
+        activeCode: body.activeCode
+    }
 
+    res.json(await accountService.activateion(activation))
+    res.end();
 })
 
 router.get("/logout", async (req: express.Request, res: express.Response) => {
@@ -39,7 +57,7 @@ router.get("/logout", async (req: express.Request, res: express.Response) => {
             title: 'Success',
             message: 'Logout Successfully'
         }) :
-        res.json(messages.exception)
+        res.json(messages.exception("Exception"))
 })
 
 export default router;

@@ -34,9 +34,11 @@ async function assertDataBaseOk() {
 //user routes 
 import news from "./routes/user/news"
 import account from "./routes/account/account"
+import profile from "./routes/account/profile"
 
 app.use("/api/news", news);
 app.use("/api/account", account);
+app.use("/api/profile", profile)
 
 //admin routes
 import newsAdmin from "./routes/admin/news.admin"
