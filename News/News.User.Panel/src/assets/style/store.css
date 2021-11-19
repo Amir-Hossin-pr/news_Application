@@ -1,0 +1,21 @@
+.stores-list{
+    margin:25px 15px;
+}
+
+.store-admin-container{
+    margin: 20px;
+}
+
+.stores-list{
+    display: flex;
+}
+
+.store-item{
+    margin:10px;
+}
+
+.stores-list-client{
+    display: flex;
+    justify-content: space-between;
+    overflow: auto;
+}

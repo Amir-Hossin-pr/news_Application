@@ -33,11 +33,82 @@
   <ItemGroup>
     <Content Include="public\favicon.ico" />
     <Content Include="public\index.html" />
+    <Content Include="src\api\ApiCall.ts" />
+    <Content Include="src\api\apiList\Account.ts" />
+    <Content Include="src\api\apiList\Carousel.ts" />
+    <Content Include="src\api\apiList\Comment.ts" />
+    <Content Include="src\api\apiList\Group.ts" />
+    <Content Include="src\api\apiList\Guilds.ts" />
+    <Content Include="src\api\apiList\Product.ts" />
+    <Content Include="src\api\apiList\ShopCart.ts" />
+    <Content Include="src\api\apiList\Store.ts" />
+    <Content Include="src\api\apiList\Survey.ts" />
+    <Content Include="src\api\apiList\Ticket.ts" />
     <Content Include="src\App.vue" />
+    <Content Include="src\assets\images\1-apex.png" />
+    <Content Include="src\assets\images\2-stack.png" />
+    <Content Include="src\assets\images\3-convex.png" />
+    <Content Include="src\assets\images\4-materialize.png" />
+    <Content Include="src\assets\images\404.png" />
+    <Content Include="src\assets\images\500.png" />
+    <Content Include="src\assets\images\arrow-down-white.png" />
+    <Content Include="src\assets\images\arrow-down.png" />
+    <Content Include="src\assets\images\auth-bg-dark.jpg" />
+    <Content Include="src\assets\images\auth-bg.jpg" />
+    <Content Include="src\assets\images\bank.png" />
+    <Content Include="src\assets\images\comingsoon.png" />
+    <Content Include="src\assets\images\content-img-1.jpg" />
+    <Content Include="src\assets\images\content-img-2.jpg" />
+    <Content Include="src\assets\images\content-img-3.jpg" />
+    <Content Include="src\assets\images\content-img-4.jpg" />
+    <Content Include="src\assets\images\faq.png" />
+    <Content Include="src\assets\images\forgot-password.png" />
+    <Content Include="src\assets\images\google-pay.png" />
+    <Content Include="src\assets\images\lock-screen.png" />
+    <Content Include="src\assets\images\login.png" />
+    <Content Include="src\assets\images\maintenance-2.png" />
+    <Content Include="src\assets\images\modern-thumbnail.png" />
+    <Content Include="src\assets\images\not-authorized.png" />
+    <Content Include="src\assets\images\PayPal_logo.png" />
+    <Content Include="src\assets\images\pixinvent-logo.png" />
+    <Content Include="src\assets\images\pixinvent.jpg" />
+    <Content Include="src\assets\images\register.png" />
+    <Content Include="src\assets\images\reset-password.png" />
+    <Content Include="src\assets\images\thumbnail.png" />
+    <Content Include="src\assets\images\vuesax-banner.jpg" />
     <Content Include="src\assets\logo.svg" />
-    <Content Include="src\components\HelloWorld.vue" />
-    <Content Include="src\components\Home.vue" />
+    <Content Include="src\assets\style\account.css" />
+    <Content Include="src\assets\style\craousel.css" />
+    <Content Include="src\assets\style\dragScroll.css" />
+    <Content Include="src\assets\style\group.css" />
+    <Content Include="src\assets\style\guilds.css" />
+    <Content Include="src\assets\style\product.css" />
+    <Content Include="src\assets\style\shopCart.css" />
+    <Content Include="src\assets\style\store.css" />
+    <Content Include="src\assets\style\ticket.css" />
+    <Content Include="src\components\core\AppDialog.vue" />
+    <Content Include="src\components\core\AppSparkline.vue" />
+    <Content Include="src\components\core\ConfirmDialog.vue" />
+    <Content Include="src\components\core\TheAppBar.vue" />
+    <Content Include="src\components\core\TheCarousel.vue" />
+    <Content Include="src\components\core\TheLoading.vue" />
+    <Content Include="src\components\core\TheNavigation.vue" />
+    <Content Include="src\components\core\TheSnackbar.vue" />
+    <Content Include="src\layout\account.vue" />
+    <Content Include="src\layout\home.vue">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\pages\account\Activation.vue" />
+    <Content Include="src\pages\account\ChangePassword.vue" />
+    <Content Include="src\pages\account\ForgotPassword.vue" />
+    <Content Include="src\pages\account\Login.vue" />
+    <Content Include="src\pages\account\Profile.vue" />
+    <Content Include="src\pages\account\SellerRequest.vue" />
+    <Content Include="src\pages\account\Signup.vue" />
     <Content Include="src\plugins\axios.js" />
+    <Content Include="src\services\AccountServices.ts" />
+    <Content Include="src\services\Dragscroll.ts" />
+    <Content Include="src\services\Title.ts" />
     <Content Include="tsconfig.json" />
     <Content Include="package.json" />
     <Content Include="README.md" />
@@ -46,8 +117,18 @@
     <Folder Include="dist\" />
     <Folder Include="public\" />
     <Folder Include="src\" />
+    <Folder Include="src\api\" />
+    <Folder Include="src\api\apiList\" />
     <Folder Include="src\assets\" />
+    <Folder Include="src\assets\images\" />
+    <Folder Include="src\assets\style\" />
     <Folder Include="src\components\" />
+    <Folder Include="src\components\core\" />
+    <Folder Include="src\layout\" />
+    <Folder Include="src\consts\" />
+    <Folder Include="src\pages\" />
+    <Folder Include="src\pages\account\" />
+    <Folder Include="src\services\" />
     <Folder Include="src\store\" />
     <Folder Include="src\router\" />
     <Folder Include="src\plugins\" />
@@ -63,6 +144,9 @@
     <Content Include="babel.config.js" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="src\consts\index.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="src\plugins\vuetify.ts" />
     <TypeScriptCompile Include="src\router\index.ts">
       <SubType>Code</SubType>

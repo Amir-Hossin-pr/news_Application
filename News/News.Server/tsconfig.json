@@ -2,7 +2,8 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "es6",
-    "lib": ["es6"],
+    "charset": "utf8",
+    "lib": [ "es6" ],
     "sourceMap": true
   },
   "exclude": [

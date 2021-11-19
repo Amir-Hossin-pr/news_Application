@@ -1,0 +1,15 @@
+.guilds-container {
+  display: flex;
+  justify-content: space-between;
+  overflow: auto;
+}
+
+.guild-contianer-title{
+    margin: 0;
+    direction: rtl;
+    margin: 10px;
+}
+
+.guild-item{
+    margin: 10px;
+}

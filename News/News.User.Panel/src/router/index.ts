@@ -9,10 +9,30 @@ const routes: Array<RouteConfig> = [
     {
         path: '/',
         name: 'home',
+        component: () => import("@/layout/home.vue"),
         meta: (route: Route) => ({
-            title: '????',
+            title: 'Home',
             route: route
         })
+    }, {
+        path: '/account',
+        name: 'account',
+        component: () => import("@/layout/account.vue"),
+        meta: (route: Route) => ({
+            title: 'Account',
+            route: route
+        }),
+        children: [
+            {
+                path: "",
+                name: "profile",
+                component: () => import("@/pages/account/Profile.vue"),
+                meta: (route: Route) => ({
+                    title: 'Profile',
+                    route: route
+                }),
+            }
+        ]
     }]
 
 const router = new VueRouter({
@@ -20,8 +40,8 @@ const router = new VueRouter({
     mode: "history"
 })
 
-router.beforeEach((to: Route, from: Route, next: NavigationGuardNext<Vue>) => {
-    let meta: any = to.meta(to)
+router.beforeEach((to: any, from: Route, next: NavigationGuardNext<Vue>) => {
+    let meta = to.meta(to)
 
     if (!meta.middleware) {
         next();
