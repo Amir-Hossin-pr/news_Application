@@ -11,7 +11,17 @@ export default class AccountApiCall {
             return response;
         }
         catch {
-
+return messages.exception;
         }
+    }
+    
+    async signUp(signUp:models.SignUp){
+      try{
+        let request:AxiosResponse= await apiCall.post("/account/signUp", signUp)
+        let response = await request.data;
+        return response;
+      }catch{
+        return messages.exception 
+      }
     }
 };
