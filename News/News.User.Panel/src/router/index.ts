@@ -3,6 +3,8 @@ import Vue from "vue"
 import store from "../store/index"
 import pipeLine from "./middlewarePipeline"
 import auth from "./middleware/auth"
+import changeTitle from "../services/Title"
+import guest from "./middleware/guest"
 
 Vue.use(VueRouter)
 
@@ -29,10 +31,20 @@ const routes: Array<RouteConfig> = [
                 name: "profile",
                 component: () => import("@/pages/account/Profile.vue"),
                 meta: (route: Route) => ({
-                    title: 'Profile',
+                    title: 'User Profile',
                     route: route,
                     middleware: auth
                 }),
+            },
+            {
+                path: "/login",
+                name: "login",
+                component: () => import("@/pages/account/Login.vue"),
+                meta: (route: Route) => ({
+                    title: 'Login',
+                    route: route,
+                    middleware: guest
+                })
             }
         ]
     }]
@@ -45,8 +57,10 @@ const router = new VueRouter({
 router.beforeEach((to: any, from: Route, next: NavigationGuardNext<Vue>) => {
     let meta = to.meta(to)
 
+    changeTitle(meta.title)
+
     if (!meta.middleware) {
-       return next();
+        return next();
     }
 
     const middleware = meta.middleware;

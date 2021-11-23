@@ -7,14 +7,14 @@
     <div class="account-form-body">
       <div class="account-form-title">
         <h3>{{ title }}</h3>
-        <v-card-subtitle>تغییر کلمه عبور</v-card-subtitle>
+        <v-card-subtitle>Change password</v-card-subtitle>
       </div>
 
       <v-form ref="changePasswordForm">
         <v-text-field
           outlined
-          label="کلمه عبور فعلی"
-          placeholder="کلمه عبور فعلی"
+          label="Current Password"
+          placeholder="Current Password"
           clearable
           v-model="changePassword.currentPassword"
           :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
@@ -25,8 +25,8 @@
 
         <v-text-field
           outlined
-          label="کلمه عبور جدید"
-          placeholder="کلمه عبور جدید"
+          label="Password جدید"
+          placeholder="Password جدید"
           clearable
           v-model="changePassword.newPassword"
           :append-icon="showNew ? 'mdi-eye' : 'mdi-eye-off'"
@@ -37,8 +37,8 @@
 
         <v-text-field
           outlined
-          label=" تکرار کلمه عبور جدید "
-          placeholder="تکرار کلمه عبور جدید"
+          label="Repet the new password"
+          placeholder="Repet the new password"
           clearable
           v-model="changePassword.confirmPassword"
           :append-icon="showNew ? 'mdi-eye' : 'mdi-eye-off'"
@@ -47,7 +47,7 @@
           @click:append="showNew = !showNew"
         ></v-text-field>
 
-        <v-btn block color="primary" @click="submit"> تغییر کلمه عبور </v-btn>
+        <v-btn block color="primary" @click="submit"> تغییر Password </v-btn>
       </v-form>
     </div>
   </div>

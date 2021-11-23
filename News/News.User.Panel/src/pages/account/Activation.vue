@@ -13,8 +13,8 @@
             <v-form ref="activationForm">
                 <v-text-field v-model="userName"
                               outlined
-                              label="نام کاربری"
-                              placeholder="نام کاربری"
+                              label="User Name"
+                              placeholder="User Name"
                               clearable
                               :rules="[rules.required]"></v-text-field>
 
@@ -35,7 +35,7 @@
                         </v-btn>
                     </v-col>
                     <v-col cols="12" sm="6">
-                        <v-btn block color="info" to="/account/login"> ورود </v-btn>
+                        <v-btn block color="info" to="/account/login"> Login </v-btn>
                     </v-col>
                 </v-row>
             </v-form>
@@ -88,7 +88,7 @@
                         .catch(() => {
                             this.showMessage(messages.networkError);
                         });
-                } else this.showMessage(messages.canNotNull("نام کاربری"));
+                } else this.showMessage(messages.canNotNull("User Name"));
             },
             showMessage(text: string) {
                 this.$root.$refs.snackbar.open(text)

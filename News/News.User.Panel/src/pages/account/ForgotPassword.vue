@@ -7,15 +7,15 @@
     <div class="account-form-body">
       <div class="account-form-title">
         <h3>{{ title }}</h3>
-        <v-card-subtitle>فراموشی کلمه عبور جدید</v-card-subtitle>
+        <v-card-subtitle>Forgot password</v-card-subtitle>
       </div>
 
       <v-form ref="forgotPasswordForm">
         <v-text-field
           v-model="userName"
           outlined
-          label="نام کاربری"
-          placeholder="نام کاربری"
+          label="User Name"
+          placeholder="User Name"
           clearable
           :rules="[rules.required]"
         ></v-text-field>
@@ -24,16 +24,16 @@
           <v-text-field
             v-model="recoveryCode"
             outlined
-            label="کد بازیابی"
-            placeholder="کد بازیابی"
+            label="Recovery code"
+            placeholder="Recovery code"
             clearable
             :rules="[rules.required]"
           ></v-text-field>
 
           <v-text-field
             outlined
-            label="کلمه عبور جدید"
-            placeholder="کلمه عبور جدید"
+            label="New password"
+            placeholder="New password"
             clearable
             v-model="password"
             :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
@@ -44,8 +44,8 @@
 
           <v-text-field
             outlined
-            label=" تکرار کلمه عبور جدید"
-            placeholder="تکرار کلمه عبور جدید"
+            label="Repet the new password"
+            placeholder="Repet the new password"
             clearable
             v-model="confirmPassword"
             :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
@@ -56,19 +56,19 @@
         </div>
 
         <v-btn block color="primary" @click="getCode" v-if="!codeSent">
-          دریافت کد
+         Receive code
         </v-btn>
         <v-btn block color="primary" @click="changePassword" v-if="codeSent">
-          تغییر کلمه عبور جدید
+          Change new password
         </v-btn>
         <br />
 
         <v-row>
           <v-col cols="12" sm="6">
-            <v-btn block color="info" to="/account/login"> ورود </v-btn>
+            <v-btn block color="info" to="/account/login"> Login </v-btn>
           </v-col>
           <v-col cols="12" sm="6">
-            <v-btn block color="info" to="/account/Signup"> ثبت نام </v-btn>
+            <v-btn block color="info" to="/account/Signup"> Signup </v-btn>
           </v-col>
         </v-row>
       </v-form>

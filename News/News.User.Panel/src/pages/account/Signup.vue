@@ -7,30 +7,30 @@
     <div class="account-form-body">
       <div class="account-form-title">
         <h3>{{ title }}</h3>
-        <v-card-subtitle>ساخت حساب کاربری</v-card-subtitle>
+        <v-card-subtitle>Create Account</v-card-subtitle>
       </div>
 
       <v-form ref="signupForm">
         <v-text-field
           v-model="userName"
           outlined
-          label="نام کاربری"
-          placeholder="نام کاربری"
+          label="User Name"
+          placeholder="User Name"
           clearable
           :rules="[rules.required]"
         ></v-text-field>
         <v-text-field
           v-model="phoneNumber"
           outlined
-          label="شماره موبایل"
-          placeholder="شماره موبایل"
+          label="Mobile Number"
+          placeholder="Mobile Number"
           clearable
           :rules="[rules.required]"
         ></v-text-field>
         <v-text-field
           outlined
-          label="کلمه عبور"
-          placeholder="کلمه عبور"
+          label="Password"
+          placeholder="Password"
           clearable
           v-model="password"
           :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
@@ -39,20 +39,13 @@
           @click:append="show = !show"
         ></v-text-field>
 
-        <!-- <v-text-field
-          outlined
-          label="کد معرف"
-          placeholder="کد معرف"
-          clearable
-          v-model="reagentCode"
-        ></v-text-field> -->
-
-        <v-btn block color="primary" @click="signup"> ثبت نام </v-btn>
+    
+        <v-btn block color="primary" @click="signup"> Signup </v-btn>
         <br />
 
         <v-row>
           <v-col cols="12" sm="6">
-            <v-btn block color="info" to="/account/login"> ورود </v-btn>
+            <v-btn block color="info" to="/account/login"> Login </v-btn>
           </v-col>
           <v-col cols="12" sm="6">
             <v-btn block color="info" to="/account/activation">
@@ -73,7 +66,7 @@ export default {
   middleware:'auth.client',
   layout: "account",
   head: {
-    title: "ثبت نام",
+    title: "Signup",
   },
   data: () => ({
     rules: rules,
