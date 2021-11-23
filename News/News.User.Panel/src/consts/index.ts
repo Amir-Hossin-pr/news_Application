@@ -1,13 +1,13 @@
-export const appTitle = "??????? ?????";
+export const appTitle = "Friends News";
 
 export const rules = {
-    required: (value:any) => !!value || "??? ???? ?????? ???",
+    required: (value: any) => !!value || "Filling this field is compulsory",
 };
 
 export const messages = {
-    formInvalid: "???? ??? ???? ?? ?? ?? ????",
-    networkError: "????? ?? ??????? ?????? ??? ???",
-    canNotNull: (item:string) => `???? ${item} ???????? ???? ????`,
+    formInvalid: "The full form is not filled",
+    networkError: "An error occurred in connection to the server",
+    canNotNull: (item: string) => `The ${item} value cannot be empty`,
 };
 
 export const tokenName = "Authorization";
@@ -23,31 +23,13 @@ export const navigationItemsIr = [
     {
         id: 0,
         icon: "mdi-home",
-        title: "????",
+        title: "Home",
         to: "/",
     },
     {
         id: 1,
         icon: "mdi-account",
-        title: "???? ??????",
+        title: "User Account",
         to: "/account",
-    },
-    {
-        id: 2,
-        icon: "mdi-shopping",
-        title: "??? ????",
-        to: "/shopcart",
-    },
-    {
-        id: 3,
-        icon: "mdi-ticket",
-        title: "???? ??",
-        to: "/ticket",
-    },
-    {
-        id: 4,
-        icon: "mdi-heart",
-        title: "????? ???? ??",
-        to: "/savedProducts",
     },
 ];
