@@ -42,9 +42,12 @@ class ProfileService {
                 let user = yield accountService.getUser(header);
                 if (user != null) {
                     let findUser = yield context_1.default.models.User.findOne({ where: { id: user.id } });
+                    let profileImage = (profile.image != "" && profile.image.indexOf("http") == -1)
+                        ? yield (0, image_service_1.saveImage)({ base64: profile.image, path: 'profile' })
+                        : user.image;
                     yield findUser.update({
                         fullName: profile.fullName,
-                        image: yield (0, image_service_1.saveImage)({ base64: profile.base64, path: 'profile' })
+                        image: profileImage
                     });
                     return index_1.messages.success({
                         title: 'Successfully',
@@ -65,7 +68,7 @@ class ProfileService {
             userName: user.userName,
             mobileNo: user.mobileNo,
             email: user.email,
-            image: `/images/profile/${user.image}`
+            image: `http://localhost:3000/images/profile/${user.image}`
         };
     }
 }
