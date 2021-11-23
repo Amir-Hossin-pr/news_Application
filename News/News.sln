@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "User", "User", "{479889E5-2
 EndProject
 Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "News.User.Panel", "News.User.Panel\News.User.Panel.njsproj", "{FC58F935-AE48-44E4-A7C5-246BEA66157A}"
 EndProject
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "News.Admin.Panel", "News.Admin.Panel\News.Admin.Panel.njsproj", "{5C29CE60-D52D-4E10-8949-5A41F72C391F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,10 @@ Global
 		{FC58F935-AE48-44E4-A7C5-246BEA66157A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC58F935-AE48-44E4-A7C5-246BEA66157A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC58F935-AE48-44E4-A7C5-246BEA66157A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C29CE60-D52D-4E10-8949-5A41F72C391F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C29CE60-D52D-4E10-8949-5A41F72C391F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C29CE60-D52D-4E10-8949-5A41F72C391F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C29CE60-D52D-4E10-8949-5A41F72C391F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -42,6 +48,7 @@ Global
 		{75CAEBBA-B465-49A3-A1D3-910DCD05499D} = {1B11B0B1-F77E-47C1-A464-5411E761D954}
 		{479889E5-24B7-41DA-922B-CD08D59A5359} = {1B11B0B1-F77E-47C1-A464-5411E761D954}
 		{FC58F935-AE48-44E4-A7C5-246BEA66157A} = {479889E5-24B7-41DA-922B-CD08D59A5359}
+		{5C29CE60-D52D-4E10-8949-5A41F72C391F} = {75CAEBBA-B465-49A3-A1D3-910DCD05499D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {368A51EB-BA2C-4B3B-B1CF-F8DDAF8A6B08}

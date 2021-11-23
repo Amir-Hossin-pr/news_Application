@@ -35,15 +35,6 @@
     <Content Include="public\index.html" />
     <Content Include="src\api\ApiCall.ts" />
     <Content Include="src\api\apiList\Account.ts" />
-    <Content Include="src\api\apiList\Carousel.ts" />
-    <Content Include="src\api\apiList\Comment.ts" />
-    <Content Include="src\api\apiList\Group.ts" />
-    <Content Include="src\api\apiList\Guilds.ts" />
-    <Content Include="src\api\apiList\Product.ts" />
-    <Content Include="src\api\apiList\ShopCart.ts" />
-    <Content Include="src\api\apiList\Store.ts" />
-    <Content Include="src\api\apiList\Survey.ts" />
-    <Content Include="src\api\apiList\Ticket.ts" />
     <Content Include="src\App.vue" />
     <Content Include="src\assets\images\1-apex.png" />
     <Content Include="src\assets\images\2-stack.png" />
