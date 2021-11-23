@@ -15,11 +15,17 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const PORT = 3000;
 const app = express();
+//Application configs
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json({ limit: '100mb' }));
 app.use(express.urlencoded({ limit: '100mb' }));
 app.use(bodyParser.urlencoded({ extended: true, limit: '100mb' }));
 app.use(bodyParser.json({ limit: '100mb' }));
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+    res.header("Access-Control-Allow-Headers", "*");
+    next();
+});
 //data base conntection
 const index_1 = require("./dataBase/context/index");
 function assertDataBaseOk() {

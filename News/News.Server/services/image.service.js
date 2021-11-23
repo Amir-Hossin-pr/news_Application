@@ -14,7 +14,7 @@ const crypto = require("crypto");
 const fs = require("fs");
 function saveImage(image) {
     return __awaiter(this, void 0, void 0, function* () {
-        if (image.base64 != null && image.base64 != "") {
+        if (image.base64 != "") {
             try {
                 const type = image.base64.split(';')[0].split('/')[1];
                 console.log(type);

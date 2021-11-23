@@ -31,9 +31,13 @@ export class ProfileService {
             let user = await accountService.getUser(header);
             if (user != null) {
                 let findUser = await sequlize.models.User.findOne({ where: { id: user.id } })
+                let profileImage = (profile.image != "" && profile.image.indexOf("http") == -1)
+                    ? await saveImage({ base64: profile.image, path: 'profile' })
+                    : user.image
+
                 await findUser.update({
                     fullName: profile.fullName,
-                    image: await saveImage({ base64: profile.base64, path: 'profile' })
+                    image: profileImage
                 })
                 return messages.success({
                     title: 'Successfully',
@@ -53,7 +57,7 @@ export class ProfileService {
             userName: user.userName,
             mobileNo: user.mobileNo,
             email: user.email,
-            image: `/images/profile/${user.image}`
+            image: `http://localhost:3000/images/profile/${user.image}`
         }
     }
 }
@@ -61,5 +65,6 @@ export class ProfileService {
 
 type Profile = {
     fullName: string;
-    base64: string;
+    image: string;
+    email: string
 }

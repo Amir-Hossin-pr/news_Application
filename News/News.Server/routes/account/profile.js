@@ -21,8 +21,9 @@ router.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 router.post("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     let body = req.body;
     res.json(yield profileService.updateProfile(req.headers, {
-        base64: body.base64,
-        fullName: body.fullName
+        image: body.image,
+        fullName: body.fullName,
+        email: body.email
     }));
     res.end();
 }));
