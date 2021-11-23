@@ -14,3 +14,10 @@ export interface Activation {
     userName: string;
     activeCode: string;
 }
+
+export interface Profile {
+    fullName: string;
+    userName: string;
+    image: string;
+    email: string;
+}
