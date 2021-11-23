@@ -2,7 +2,7 @@ import * as crypto from 'crypto'
 import * as fs from 'fs'
 
 export async function saveImage(image: SaveImage) {
-    if (image.base64 != null && image.base64 != "") {
+    if (image.base64 != "") {
         try {
             const type = image.base64.split(';')[0].split('/')[1];
             console.log(type);
@@ -11,7 +11,7 @@ export async function saveImage(image: SaveImage) {
             const base64Data = image.base64.replace(/^data:([A-Za-z+/]+);base64,/, '');
             fs.writeFileSync(path, base64Data, { encoding: "base64" })
             return imageName;
-        } catch {
+        } catch {           
             return "null.png";
         }
     }
