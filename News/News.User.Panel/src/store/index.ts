@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import AccountService from "../services/AccountServices"
 
 
 Vue.use(Vuex);
@@ -8,7 +9,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
         user: {
-            isLogin: true
+            isLogin: AccountService.isAuthenticated()
         }
     },
     getters: {
