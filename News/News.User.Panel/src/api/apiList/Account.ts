@@ -9,10 +9,28 @@ export default class AccountApiCall {
         try {
             let request: AxiosResponse = await apiCall.post("/account/login", login)
             let response = await request.data;
+            if (response.status) {
+                localStorage.setItem(response.session.key, response.session.value)
+            }
             return response;
         }
         catch {
-            return messages.networkError;
+            return {
+                title: messages.networkError
+            }
+        }
+    }
+
+    async updateProfile(profile: models.Profile) {
+        try {
+            let request: AxiosResponse = await apiCall.post("/profile", profile)
+            let response = await request.data;
+            return response
+        }
+        catch {
+            return {
+                title: messages.networkError
+            }
         }
     }
 
@@ -23,7 +41,22 @@ export default class AccountApiCall {
             return response;
         }
         catch {
-            return messages.networkError
+            return {
+                title: messages.networkError
+            }
+        }
+    }
+
+    async getProfile() {
+        try {
+            let request: AxiosResponse = await apiCall.get("/profile")
+            let response = await request.data
+            return response
+        }
+        catch {
+            return {
+                title: messages.networkError
+            }
         }
     }
 };
