@@ -38,7 +38,11 @@
     <Content Include="dataBase\models\users\role.model.ts" />
     <Content Include="dataBase\models\users\session.model.ts" />
     <Content Include="dataBase\models\users\user.model.ts" />
-    <Content Include="public\images\news\45cb6089-bd11-4b65-a95b-4dcae371573d1636824870277.png" />
+    <Content Include="public\images\news\0848cf13-2e66-45e2-9475-7059c0eceb1f1638008501572.jpeg" />
+    <Content Include="public\images\news\95122236-b720-4512-bdf6-d9bf587fc1071638008468166.jpeg" />
+    <Content Include="public\images\news\d3ead468-e781-479e-ad04-2f6a979829ec1638008150150.jpeg" />
+    <Content Include="public\images\news\dc198a44-fcf5-4272-b5cd-30e16a4558f21638008391685.jpeg" />
+    <Content Include="public\images\news\e17ea9c0-93f0-47f2-aeac-df91cf28c1bc1638009881423.jpeg" />
     <Content Include="public\images\profile\null.png" />
     <Content Include="services\news\news.service.ts" />
     <Content Include="services\user\account.service.ts" />
