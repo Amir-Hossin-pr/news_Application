@@ -11,11 +11,17 @@ export async function saveImage(image: SaveImage) {
             const base64Data = image.base64.replace(/^data:([A-Za-z+/]+);base64,/, '');
             fs.writeFileSync(path, base64Data, { encoding: "base64" })
             return imageName;
-        } catch {           
+        } catch {
             return "null.png";
         }
     }
     return "null.png";
+}
+
+
+export function createImageAddress(imgName: string, folder: string) {
+    let url = `http://localhost:3000/images/${folder}/${imgName}`
+    return url
 }
 
 type SaveImage = {
