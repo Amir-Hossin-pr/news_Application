@@ -32,6 +32,12 @@ exports.messages = {
         title: title,
         message: message,
         result: result
+    }),
+    notFound: (message) => ({
+        status: false,
+        code: 404,
+        message: message,
+        result: {}
     })
 };
 //# sourceMappingURL=index.js.map

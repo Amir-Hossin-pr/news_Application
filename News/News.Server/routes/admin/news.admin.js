@@ -23,12 +23,12 @@ router.use((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
             next();
         }
         else {
-            res.json(index_1.messages.accessDenied);
+            res.json(index_1.messages.accessDenied("You do not have access to this"));
             res.end();
         }
     }
     else {
-        res.json(index_1.messages.accessDenied);
+        res.json(index_1.messages.accessDenied("You do not have access to this"));
         res.end();
     }
 }));
@@ -54,7 +54,7 @@ router.post("/create", (req, res) => __awaiter(void 0, void 0, void 0, function*
 }));
 router.post("/update", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     let body = req.body;
-    let updated = yield newsServices.createNews({
+    let updated = yield newsServices.updateNews({
         id: body.id,
         title: body.title,
         isActive: body.isActive,
@@ -66,6 +66,9 @@ router.post("/update", (req, res) => __awaiter(void 0, void 0, void 0, function*
     res.end();
 }));
 router.post("/delete", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    let delNews = yield newsServices.deleteNews(req.body.id);
+    res.json(delNews);
+    res.end();
 }));
 exports.default = router;
 //# sourceMappingURL=news.admin.js.map

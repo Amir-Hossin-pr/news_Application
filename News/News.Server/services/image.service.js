@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.saveImage = void 0;
+exports.createImageAddress = exports.saveImage = void 0;
 const crypto = require("crypto");
 const fs = require("fs");
 function saveImage(image) {
@@ -32,4 +32,9 @@ function saveImage(image) {
     });
 }
 exports.saveImage = saveImage;
+function createImageAddress(imgName, folder) {
+    let url = `http://localhost:3000/images/${folder}/${imgName}`;
+    return url;
+}
+exports.createImageAddress = createImageAddress;
 //# sourceMappingURL=image.service.js.map

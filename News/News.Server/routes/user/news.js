@@ -19,6 +19,7 @@ router.get("/:page/:count", (req, res) => __awaiter(void 0, void 0, void 0, func
         count: parseInt(req.params.count)
     });
     res.json(news);
+    res.end();
 }));
 exports.default = router;
 //# sourceMappingURL=news.js.map
