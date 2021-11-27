@@ -9,7 +9,7 @@
                           :nav="false">
                     <div class="carousel-other-container" v-for="i in 15" :key="i">
                         <div class="carousel-item">
-                            <img src="http://localhost:3000/images/news/d8c1220c-a3a5-4abd-9d9d-be1d229d055c1638017578727.jpeg"
+                            <img src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
                                  alt="" />
                         </div>
                     </div>
@@ -23,7 +23,7 @@
                           :nav="false">
                     <div class="carousel-other-container" v-for="i in 15" :key="i">
                         <div class="carousel-item">
-                            <img src="http://localhost:3000/images/news/d8c1220c-a3a5-4abd-9d9d-be1d229d055c1638017578727.jpeg"
+                            <img src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
                                  alt="" />
                         </div>
                     </div>
@@ -38,7 +38,7 @@
                       :nav="false">
                 <div class="carousel-container" v-for="i in 15" :key="i">
                     <div class="carousel-item">
-                        <img src="http://localhost:3000/images/news/d8c1220c-a3a5-4abd-9d9d-be1d229d055c1638017578727.jpeg"
+                        <img src="https://cdn.vuetifyjs.com/images/cards/cooking.png"
                              alt="" />
                     </div>
                 </div>
