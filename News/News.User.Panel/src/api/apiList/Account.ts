@@ -59,4 +59,20 @@ export default class AccountApiCall {
             }
         }
     }
+
+    async logout() {
+        try {
+            let request: AxiosResponse = await apiCall.get("/account/logout")
+            let response = await request.data;
+            if (response.status) {
+                localStorage.clear();
+            }
+            return response;
+        }
+        catch {
+            return {
+                title: messages.networkError
+            }
+        }
+    }
 };
