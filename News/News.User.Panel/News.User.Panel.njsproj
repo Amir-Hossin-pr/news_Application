@@ -31,8 +31,25 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="package-lock.json" />
     <Content Include="public\favicon.ico" />
+    <Content Include="public\img\icons\android-chrome-192x192.png" />
+    <Content Include="public\img\icons\android-chrome-512x512.png" />
+    <Content Include="public\img\icons\android-chrome-maskable-192x192.png" />
+    <Content Include="public\img\icons\android-chrome-maskable-512x512.png" />
+    <Content Include="public\img\icons\apple-touch-icon-120x120.png" />
+    <Content Include="public\img\icons\apple-touch-icon-152x152.png" />
+    <Content Include="public\img\icons\apple-touch-icon-180x180.png" />
+    <Content Include="public\img\icons\apple-touch-icon-60x60.png" />
+    <Content Include="public\img\icons\apple-touch-icon-76x76.png" />
+    <Content Include="public\img\icons\apple-touch-icon.png" />
+    <Content Include="public\img\icons\favicon-16x16.png" />
+    <Content Include="public\img\icons\favicon-32x32.png" />
+    <Content Include="public\img\icons\msapplication-icon-144x144.png" />
+    <Content Include="public\img\icons\mstile-150x150.png" />
+    <Content Include="public\img\icons\safari-pinned-tab.svg" />
     <Content Include="public\index.html" />
+    <Content Include="public\robots.txt" />
     <Content Include="src\api\ApiCall.ts" />
     <Content Include="src\api\apiList\Account.ts" />
     <Content Include="src\App.vue" />
@@ -99,17 +116,22 @@
     <Content Include="src\pages\account\Profile.vue" />
     <Content Include="src\pages\account\SellerRequest.vue" />
     <Content Include="src\pages\account\Signup.vue" />
-    <Content Include="src\plugins\axios.js" />
+    <Content Include="src\pages\home\Index.vue">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="src\services\AccountServices.ts" />
     <Content Include="src\services\Dragscroll.ts" />
     <Content Include="src\services\Title.ts" />
     <Content Include="tsconfig.json" />
     <Content Include="package.json" />
     <Content Include="README.md" />
+    <Content Include="vue.config.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="dist\" />
     <Folder Include="public\" />
+    <Folder Include="public\img\" />
+    <Folder Include="public\img\icons\" />
     <Folder Include="src\" />
     <Folder Include="src\api\" />
     <Folder Include="src\api\apiList\" />
@@ -118,10 +140,12 @@
     <Folder Include="src\assets\style\" />
     <Folder Include="src\components\" />
     <Folder Include="src\components\core\" />
+    <Folder Include="src\components\news\" />
     <Folder Include="src\layout\" />
     <Folder Include="src\consts\" />
     <Folder Include="src\pages\" />
     <Folder Include="src\pages\account\" />
+    <Folder Include="src\pages\home\" />
     <Folder Include="src\services\" />
     <Folder Include="src\store\" />
     <Folder Include="src\router\" />
@@ -137,10 +161,15 @@
     <Content Include="babel.config.js" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="src\api\models.ts" />
     <TypeScriptCompile Include="src\consts\index.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="src\plugins\axios.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="src\plugins\vuetify.ts" />
+    <TypeScriptCompile Include="src\registerServiceWorker.ts" />
     <TypeScriptCompile Include="src\router\index.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
