@@ -11,15 +11,23 @@ Vue.use(VueRouter)
 const routes: Array<RouteConfig> = [
     {
         path: '/',
-        name: 'home',
         component: () => import("@/layout/home.vue"),
         meta: (route: Route) => ({
             title: 'Home',
             route: route
-        })
+        }),
+        children: [
+            {
+                path: "",
+                name: "home",
+                component: () => import("@/pages/home/Index.vue"),
+                meta: (route: Route) => ({
+                    title: 'Home',
+                    route: route
+                })
+            }]
     }, {
         path: '/account',
-        name: 'account',
         component: () => import("@/layout/account.vue"),
         meta: (route: Route) => ({
             title: 'Account',
@@ -37,7 +45,7 @@ const routes: Array<RouteConfig> = [
                 }),
             },
             {
-                path: "/login",
+                path: "/account/login",
                 name: "login",
                 component: () => import("@/pages/account/Login.vue"),
                 meta: (route: Route) => ({
