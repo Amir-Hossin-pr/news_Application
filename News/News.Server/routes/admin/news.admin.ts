@@ -14,12 +14,12 @@ router.use(async (req: express.Request, res: express.Response, next: express.Nex
             next();
         }
         else {
-            res.json(messages.accessDenied);
+            res.json(messages.accessDenied("You do not have access to this"));
             res.end();
         }
     }
     else {
-        res.json(messages.accessDenied);
+        res.json(messages.accessDenied("You do not have access to this"));
         res.end();
     }
 })
@@ -50,7 +50,7 @@ router.post("/create", async (req: express.Request, res: express.Response) => {
 router.post("/update", async (req: express.Request, res: express.Response) => {
     let body = req.body;
 
-    let updated = await newsServices.createNews({
+    let updated = await newsServices.updateNews({
         id: body.id,
         title: body.title,
         isActive: body.isActive,
@@ -63,7 +63,9 @@ router.post("/update", async (req: express.Request, res: express.Response) => {
 })
 
 router.post("/delete", async (req: express.Request, res: express.Response) => {
-
+    let delNews = await newsServices.deleteNews(req.body.id)
+    res.json(delNews);
+    res.end();
 })
 
 export default router;
