@@ -77,6 +77,9 @@
     <Content Include="src\assets\style\shopCart.css" />
     <Content Include="src\assets\style\store.css" />
     <Content Include="src\assets\style\ticket.css" />
+    <Content Include="src\components\core\AppBottomNavigation.vue">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="src\components\core\AppDialog.vue" />
     <Content Include="src\components\core\AppSparkline.vue" />
     <Content Include="src\components\core\ConfirmDialog.vue" />
