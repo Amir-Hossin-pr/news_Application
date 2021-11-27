@@ -34,5 +34,12 @@ export const messages = {
         title: title,
         message: message,
         result: result
+    }),
+
+    notFound: (message: string) => ({
+        status: false,
+        code: 404,
+        message: message,
+        result: {}
     })
 }
