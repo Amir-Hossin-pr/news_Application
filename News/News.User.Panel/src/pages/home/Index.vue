@@ -1,7 +1,7 @@
 <template>
-
     <div>
         <TheCarousel/>
+
     </div>
 </template>
 
