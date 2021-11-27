@@ -11,6 +11,7 @@ router.get("/:page/:count", async (req: express.Request, res: express.Response) 
         count: parseInt(req.params.count)
     });
     res.json(news);
+    res.end()
 })
 
 export default router;
