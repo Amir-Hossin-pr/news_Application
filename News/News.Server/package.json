@@ -9,10 +9,11 @@
   },
   "description": "News.Server",
   "author": {
-    "name": ""
+    "name": "FTeam"
   },
   "main": "app.js",
   "dependencies": {
+    "@types/sequelize": "^4.28.10",
     "cors": "^2.8.5",
     "debug": "^2.2.0",
     "express": "^4.14.0",

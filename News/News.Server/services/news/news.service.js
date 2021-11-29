@@ -13,6 +13,7 @@ exports.NewsServices = void 0;
 const index_1 = require("../../dataBase/context/index");
 const index_2 = require("../../consts/index");
 const image_service_1 = require("../image.service");
+const sequelize_1 = require("sequelize");
 class NewsServices {
     getClientNews(pagination) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -55,6 +56,50 @@ class NewsServices {
                 list: news.rows,
                 pages: news.count / count
             };
+        });
+    }
+    search(q, pagination) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                let news = yield index_1.default.models.News.findAndCountAll({
+                    where: {
+                        isActive: true,
+                        [sequelize_1.Op.or]: {
+                            title: {
+                                [sequelize_1.Op.like]: `%${q}%`
+                            },
+                            shortDescription: {
+                                [sequelize_1.Op.like]: `%${q}%`
+                            }
+                        }
+                    },
+                    limit: pagination.count,
+                    offset: (pagination.page * pagination.count),
+                });
+                return yield this.createNewsListResult(news, pagination.count);
+            }
+            catch (e) {
+                return index_2.messages.exception(e.message);
+            }
+        });
+    }
+    getNewsItem(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                let item = yield index_1.default.models.News.findOne({ where: { id: id } });
+                if (item) {
+                    item.get().image = (0, image_service_1.createImageAddress)(item.get().image, "news");
+                    return index_2.messages.success({
+                        title: "Success",
+                        message: "Success To Find News",
+                        result: item
+                    });
+                }
+                return index_2.messages.notFound(`Can not found News Item with id ${id}`);
+            }
+            catch (e) {
+                return index_2.messages.exception(e.message);
+            }
         });
     }
     createNews(news) {

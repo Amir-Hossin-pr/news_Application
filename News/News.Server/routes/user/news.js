@@ -21,5 +21,20 @@ router.get("/:page/:count", (req, res) => __awaiter(void 0, void 0, void 0, func
     res.json(news);
     res.end();
 }));
+router.get("/search", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    let query = req.query;
+    let news = yield newsServices.search(query.q, {
+        page: parseInt(query.page),
+        count: parseInt(query.count)
+    });
+    res.json(news);
+    res.end();
+}));
+router.get("/getNewsItem", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    let query = req.query;
+    let newsItem = yield newsServices.getNewsItem(parseInt(query.id));
+    res.json(newsItem);
+    res.end();
+}));
 exports.default = router;
 //# sourceMappingURL=news.js.map

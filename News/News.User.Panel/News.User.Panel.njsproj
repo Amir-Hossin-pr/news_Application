@@ -90,6 +90,9 @@
     <Content Include="src\assets\style\dragScroll.css" />
     <Content Include="src\assets\style\group.css" />
     <Content Include="src\assets\style\guilds.css" />
+    <Content Include="src\assets\style\news.css">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="src\assets\style\product.css" />
     <Content Include="src\assets\style\shopCart.css" />
     <Content Include="src\assets\style\store.css" />
@@ -105,6 +108,18 @@
     <Content Include="src\components\core\TheLoading.vue" />
     <Content Include="src\components\core\TheNavigation.vue" />
     <Content Include="src\components\core\TheSnackbar.vue" />
+    <Content Include="src\components\news\HomeNews.vue">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\components\news\ListedNews.vue">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\components\news\NewsItem.vue">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\components\news\NewsList.vue">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="src\layout\account.vue" />
     <Content Include="src\layout\home.vue">
       <SubType>Code</SubType>
@@ -117,6 +132,12 @@
     <Content Include="src\pages\account\SellerRequest.vue" />
     <Content Include="src\pages\account\Signup.vue" />
     <Content Include="src\pages\home\Index.vue">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\pages\news\Search.vue">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\pages\news\ShowNews.vue">
       <SubType>Code</SubType>
     </Content>
     <Content Include="src\services\AccountServices.ts" />
@@ -146,6 +167,7 @@
     <Folder Include="src\pages\" />
     <Folder Include="src\pages\account\" />
     <Folder Include="src\pages\home\" />
+    <Folder Include="src\pages\news\" />
     <Folder Include="src\services\" />
     <Folder Include="src\store\" />
     <Folder Include="src\router\" />
@@ -161,6 +183,9 @@
     <Content Include="babel.config.js" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="src\api\apiList\News.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="src\api\models.ts" />
     <TypeScriptCompile Include="src\consts\index.ts">
       <SubType>Code</SubType>
