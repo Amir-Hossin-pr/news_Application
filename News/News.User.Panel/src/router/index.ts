@@ -25,6 +25,25 @@ const routes: Array<RouteConfig> = [
                     title: 'Home',
                     route: route
                 })
+            },
+            {
+                path: "/search",
+                name: "search",
+                component: () => import("@/pages/news/Search.vue"),
+                meta: (route: Route) => ({
+                    title: `Search ${route.query.q != null ? route.query.q : ""}`,
+                    route: route,
+                    hasBackButton: true
+                })
+            }, {
+                path: "/showNews",
+                name: "showNews",
+                component: () => import("@/pages/news/ShowNews.vue"),
+                meta: (route: Route) => ({
+                    title: route.query.title,
+                    route: route,
+                    hasBackButton: true
+                })
             }]
     }, {
         path: '/account',
