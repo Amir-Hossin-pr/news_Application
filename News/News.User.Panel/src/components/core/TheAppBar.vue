@@ -6,6 +6,10 @@
                 <v-icon>mdi-backburger</v-icon>
             </v-btn>
             <v-toolbar-title>{{ title }}</v-toolbar-title>
+            <v-spacer />
+            <!--<v-btn @click="changeTheme" icon>
+                <v-icon>{{this.$vuetify.theme.dark?"mdi-weather-night" : "mdi-weather-suny"}}</v-icon>
+            </v-btn>-->
         </v-app-bar>
 
         <TheNavigation />
@@ -42,6 +46,9 @@
             back() {
                 this.$router.back();
             },
+            //changeTheme() {
+            //    this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
+            //}
         },
     })
 </script>
