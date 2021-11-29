@@ -3,6 +3,7 @@ import sequlize from "../../dataBase/context/index"
 import { messages } from "../../consts/index"
 import { PaginationModel } from "../pagination";
 import { createImageAddress, saveImage } from "../image.service"
+import { Op } from "sequelize";
 
 export class NewsServices {
     async getClientNews(pagination: PaginationModel) {
@@ -43,6 +44,48 @@ export class NewsServices {
             title: 'Success',
             list: news.rows,
             pages: news.count / count
+        }
+    }
+
+    async search(q: string, pagination: PaginationModel) {
+        try {
+            let news = await sequlize.models.News.findAndCountAll({
+                where: {
+                    isActive: true,
+                    [Op.or]: {
+                        title: {
+                            [Op.like]: `%${q}%`
+                        },
+                        shortDescription: {
+                            [Op.like]: `%${q}%`
+                        }
+                    }
+                },
+                limit: pagination.count,
+                offset: (pagination.page * pagination.count),
+            });
+            return await this.createNewsListResult(news, pagination.count)
+        }
+        catch (e) {
+            return messages.exception(e.message);
+        }
+    }
+
+    async getNewsItem(id: number) {
+        try {
+            let item = await sequlize.models.News.findOne({ where: { id: id } })
+            if (item) {
+                item.get().image = createImageAddress(item.get().image, "news")
+                return messages.success({
+                    title: "Success",
+                    message: "Success To Find News",
+                    result: item
+                })
+            }
+            return messages.notFound(`Can not found News Item with id ${id}`)
+        }
+        catch (e) {
+            return messages.exception(e.message);
         }
     }
 
