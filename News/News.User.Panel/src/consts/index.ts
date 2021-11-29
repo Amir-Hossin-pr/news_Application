@@ -32,6 +32,12 @@ export const navigationItemsIr = [
         title: "User Account",
         to: "/account",
     },
+    {
+        id: 2,
+        icon: 'mdi-magnify',
+        title: 'Search',
+        to: "/search"
+    },
 ];
 
 export const bottomItems = [
