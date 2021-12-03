@@ -147,17 +147,12 @@ export class AccountService {
     async getUserByUserName(userName: string) {
         let user = await sequlize.models.User.findOne({
             where: {
-                userName: userName
+               [Op.or]:{
+                 userName:userName,
+                 mobileNo:userName
+               }
             }
         })
-
-        if (user == null) {
-            user = await sequlize.models.User.findOne({
-                where: {
-                    mobileNo: userName
-                }
-            })
-        }
 
         return user != null ? await user.get() : null;
     }
