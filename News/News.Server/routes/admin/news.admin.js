@@ -47,7 +47,8 @@ router.post("/create", (req, res) => __awaiter(void 0, void 0, void 0, function*
         isActive: body.isActive,
         shortDescription: body.shortDescription,
         text: body.text,
-        base64: body.base64
+        base64: body.base64,
+        tags: body.tags
     });
     res.json(creaeted);
     res.end();
@@ -60,7 +61,8 @@ router.post("/update", (req, res) => __awaiter(void 0, void 0, void 0, function*
         isActive: body.isActive,
         shortDescription: body.shortDescription,
         text: body.text,
-        base64: body.base64
+        base64: body.base64,
+        tags: body.tags
     });
     res.json(updated);
     res.end();

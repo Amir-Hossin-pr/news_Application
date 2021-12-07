@@ -4,6 +4,7 @@ import { messages } from "../../consts/index"
 import { PaginationModel } from "../pagination";
 import { createImageAddress, saveImage } from "../image.service"
 import { Op } from "sequelize";
+import { log } from "console";
 
 export class NewsServices {
     async getClientNews(pagination: PaginationModel) {
@@ -75,11 +76,18 @@ export class NewsServices {
         try {
             let item = await sequlize.models.News.findOne({ where: { id: id } })
             if (item) {
-                item.get().image = createImageAddress(item.get().image, "news")
+                let itemGet = item.get()
+                itemGet.image = createImageAddress(item.get().image, "news")
+                let tags = await sequlize.models.Keys.findAll({
+                    where: {
+                        NewsId: itemGet.id
+                    }
+                })
+                itemGet.tags = tags
                 return messages.success({
                     title: "Success",
                     message: "Success To Find News",
-                    result: item
+                    result: itemGet
                 })
             }
             return messages.notFound(`Can not found News Item with id ${id}`)
@@ -103,8 +111,18 @@ export class NewsServices {
                 text: news.text,
                 image: image
             }
+            let tags = news.tags.split("#")
 
             let created = await (await sequlize.models.News.create(recentNews)).get()
+            tags.forEach(async tag => {
+                if (tag.trim() != "") {
+                    let key = {
+                        text: tag,
+                        NewsId: created.id
+                    }
+                    await sequlize.models.Keys.create(key)
+                }
+            })
             created.image = createImageAddress(recentNews.image, "news");
 
             return messages.success({
@@ -171,4 +189,5 @@ type NewsModel = {
     text: string;
     base64: string;
     isActive: boolean;
+    tags: string
 }

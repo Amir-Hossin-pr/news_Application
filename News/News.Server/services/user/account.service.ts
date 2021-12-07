@@ -6,7 +6,7 @@ import * as crypto from 'crypto'
 import {
     messages
 } from "../../consts/index"
-import { log } from "console";
+import { Op } from "sequelize";
 
 
 export class AccountService {
@@ -132,7 +132,7 @@ export class AccountService {
     }
 
     async getSession(headers: IncomingHttpHeaders) {
-        let sessionValue: string = headers["authorization"];       
+        let sessionValue: string = headers["authorization"];
         if (sessionValue != null) {
             let session = await sequlize.models.Session.findOne({
                 where: {
@@ -147,10 +147,10 @@ export class AccountService {
     async getUserByUserName(userName: string) {
         let user = await sequlize.models.User.findOne({
             where: {
-               [Op.or]:{
-                 userName:userName,
-                 mobileNo:userName
-               }
+                [Op.or]: {
+                    userName: userName,
+                    mobileNo: userName
+                }
             }
         })
 

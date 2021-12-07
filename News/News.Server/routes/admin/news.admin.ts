@@ -41,7 +41,8 @@ router.post("/create", async (req: express.Request, res: express.Response) => {
         isActive: body.isActive,
         shortDescription: body.shortDescription,
         text: body.text,
-        base64: body.base64
+        base64: body.base64,
+        tags : body.tags
     })
     res.json(creaeted);
     res.end();
@@ -56,7 +57,8 @@ router.post("/update", async (req: express.Request, res: express.Response) => {
         isActive: body.isActive,
         shortDescription: body.shortDescription,
         text: body.text,
-        base64: body.base64
+        base64: body.base64,
+        tags: body.tags
     })
     res.json(updated);
     res.end();

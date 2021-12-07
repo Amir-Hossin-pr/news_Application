@@ -38,6 +38,13 @@
                     {{news.text}}
                 </v-card-text>
             </v-card>
+            <br />
+            <v-card v-if="keys.length != 0" elevation="3" outelined>
+                <v-card-subtitle>News Key Words</v-card-subtitle>
+                <v-btn text :to="{name:'search',query:{q:item.text}}" v-for="item in keys" :key="item.id">
+                    #{{item.text}}
+                </v-btn>
+            </v-card>
         </v-col>
     </div>
 </template>
@@ -53,6 +60,7 @@
             news: {},
             liked: false,
             bookmarked: false,
+            keys: [],
             newsApi: new NewsApi()
         }),
         mounted() {
@@ -62,8 +70,11 @@
             getNews() {
                 this.newsApi.getNewsItem(this.$route.query.id)
                     .then((res) => {
-                        if (res.status)
+                        if (res.status) {
                             this.news = res.result;
+                            this.keys = []
+                            res.result.tags.forEach((tag: never) => this.keys.push(tag))
+                        }
                         this.showMessage(res.title)
                     }).catch(() => {
                         this.showMessage(messages.networkError)

@@ -33,7 +33,7 @@ function saveImage(image) {
 }
 exports.saveImage = saveImage;
 function createImageAddress(imgName, folder) {
-    let url = ` http://192.168.43.198:2525/images/${folder}/${imgName}`;
+    let url = ` http://192.168.43.198:1010/images/${folder}/${imgName}`;
     return url;
 }
 exports.createImageAddress = createImageAddress;

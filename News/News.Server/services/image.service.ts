@@ -20,7 +20,7 @@ export async function saveImage(image: SaveImage) {
 
 
 export function createImageAddress(imgName: string, folder: string) {
-    let url = `http://localhost:3000/images/${folder}/${imgName}`
+    let url = ` http://192.168.43.198:1010/images/${folder}/${imgName}`
     return url
 }
 

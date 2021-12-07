@@ -4,10 +4,16 @@
             <v-col cols="12" sm="9">
                 <div>
                     <NewsList :news="news" />
-                    <v-card-actions>
-                        <v-btn text outlined color="primary">
-                            show More
-                        </v-btn>
+                    <v-card-actions v-if="pageCount > 1">
+                        <v-col align="center">
+                            <div class="text-center">
+                                <v-pagination v-model="page"
+                                              :length="pageCount"
+                                              :total-visible="5"
+                                              @input="changePage"
+                                              circle></v-pagination>
+                            </div>
+                        </v-col>
                     </v-card-actions>
                 </div>
             </v-col>
@@ -35,24 +41,32 @@
         },
         data: () => ({
             news: [],
+            page: 1,
+            pageCount: 0,
             newsApi: new NewsApi()
         }),
         mounted() {
-            this.getNews();
+            this.getNews(0);
         },
         methods: {
-            getNews() {
+            getNews(page: number) {
                 this.$root.$refs.loading.open();
-                this.newsApi.getNews(0, 5)
+                this.newsApi.getNews(page, 5)
                     .then((res) => {
-                        if (res.status)
+                        if (res.status) {
+                            this.news = []
                             res.list.forEach((item: never) => this.news.push(item))
+                            this.pageCount = parseInt(res.pages) + 1
+                        }
                         this.showMessage(res.title)
                     })
                     .catch((e) => {
                         this.showMessage(messages.networkError)
                         console.log(e.message)
                     })
+            },
+            changePages(page: number) {
+                this.getNews(page - 1)
             },
             showMessage(text: string) {
                 this.$root.$refs.snackbar.open(text);

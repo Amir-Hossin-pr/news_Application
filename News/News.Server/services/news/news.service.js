@@ -88,11 +88,18 @@ class NewsServices {
             try {
                 let item = yield index_1.default.models.News.findOne({ where: { id: id } });
                 if (item) {
-                    item.get().image = (0, image_service_1.createImageAddress)(item.get().image, "news");
+                    let itemGet = item.get();
+                    itemGet.image = (0, image_service_1.createImageAddress)(item.get().image, "news");
+                    let tags = yield index_1.default.models.Keys.findAll({
+                        where: {
+                            NewsId: itemGet.id
+                        }
+                    });
+                    itemGet.tags = tags;
                     return index_2.messages.success({
                         title: "Success",
                         message: "Success To Find News",
-                        result: item
+                        result: itemGet
                     });
                 }
                 return index_2.messages.notFound(`Can not found News Item with id ${id}`);
@@ -116,7 +123,17 @@ class NewsServices {
                     text: news.text,
                     image: image
                 };
+                let tags = news.tags.split("#");
                 let created = yield (yield index_1.default.models.News.create(recentNews)).get();
+                tags.forEach((tag) => __awaiter(this, void 0, void 0, function* () {
+                    if (tag.trim() != "") {
+                        let key = {
+                            text: tag,
+                            NewsId: created.id
+                        };
+                        yield index_1.default.models.Keys.create(key);
+                    }
+                }));
                 created.image = (0, image_service_1.createImageAddress)(recentNews.image, "news");
                 return index_2.messages.success({
                     title: "Success",

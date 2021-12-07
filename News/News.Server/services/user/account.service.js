@@ -13,6 +13,7 @@ exports.AccountService = void 0;
 const index_1 = require("../../dataBase/context/index");
 const crypto = require("crypto");
 const index_2 = require("../../consts/index");
+const sequelize_1 = require("sequelize");
 class AccountService {
     login(user) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -160,16 +161,12 @@ class AccountService {
         return __awaiter(this, void 0, void 0, function* () {
             let user = yield index_1.default.models.User.findOne({
                 where: {
-                    userName: userName
-                }
-            });
-            if (user == null) {
-                user = yield index_1.default.models.User.findOne({
-                    where: {
+                    [sequelize_1.Op.or]: {
+                        userName: userName,
                         mobileNo: userName
                     }
-                });
-            }
+                }
+            });
             return user != null ? yield user.get() : null;
         });
     }

@@ -34,6 +34,9 @@
         components: {
             NewsList
         },
+        created() {
+            this.search = this.$route.query.q.toString()
+        },
         methods: {
             submit() {
                 if (this.search.trim() != "") {
