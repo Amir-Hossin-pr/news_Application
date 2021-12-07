@@ -2,7 +2,7 @@
     <v-col cols="12" md="4" sm="6">
         <v-card :to="{name:'showNews',query:{id:newsItem.id,title:newsItem.title}}" v-if="newsItem != null"
                  elevation="5"
-                height="400">
+                >
 
             <v-img height="250"
                    :src="newsItem.image"

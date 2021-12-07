@@ -16,7 +16,7 @@
             NewsItem
         },
         props: {
-            news: Object
+            news: Array
         },
 
     })
@@ -24,5 +24,5 @@
 </script>
 
 <style>
-    @import "../../assets/style/news.css"
+    @import "../../assets/style/news.css";
 </style>

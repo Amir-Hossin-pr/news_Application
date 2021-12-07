@@ -1,7 +1,7 @@
 <template>
     <v-col>
         <v-row>
-            <v-col cols="12" sm="9">
+            <v-col cols="12">
                 <div>
                     <NewsList :news="news" />
                     <v-card-actions v-if="pageCount > 1">
@@ -17,11 +17,11 @@
                     </v-card-actions>
                 </div>
             </v-col>
-            <v-col cols="12" sm="3">
+            <!--<v-col cols="12" sm="3">
                 <ListedNews :news="news" header="Popular News" />
                 <br />
                 <ListedNews :news="news" header="Most News" />
-            </v-col>
+            </v-col>-->
         </v-row>
     </v-col>
 </template>
@@ -65,7 +65,7 @@
                         console.log(e.message)
                     })
             },
-            changePages(page: number) {
+            changePage(page: number) {
                 this.getNews(page - 1)
             },
             showMessage(text: string) {
